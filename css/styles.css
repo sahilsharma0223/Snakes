@@ -1,3 +1,34 @@
+
+.animations{
+  transform: rotateX(360deg) rotateY(360deg) rotateY(360deg) rotateX(360deg) rotateZ(360deg) rotateZ(360deg);
+  transition: transform 1s ease;
+}
+
+.animation1{
+  transform: rotateY(0deg);
+  transition: transform 100ms ease;
+}
+.animation2{
+  transform: rotateX(90deg) translateZ(-10px);
+  transition: transform 100ms ease;
+}
+.animation3{
+  transform: rotateY(90deg) translateZ(10px);
+  transition: transform 100ms ease;
+}
+.animation4{
+  transform: rotateY(-90deg) translateZ(-10px);
+  transition: transform 100ms ease;
+}
+.animation5{
+  transform: rotateX(-90deg) translateZ(10px);
+  transition: transform 100ms ease;
+}
+.animation6{
+  transform: rotateY(-180deg) translateX(-20px);
+  transition: transform 100ms ease;
+}
+
 .bottom{
   display: flex;
    justify-content : space-between;
@@ -19,7 +50,7 @@
 }
 
 
-.dice1{
+.dice{
   position: relative;
   top:-55px;
   left: 100px;
@@ -31,9 +62,9 @@
   perspective: 3000px;
 }
 
-.animations{
-  transform: rotateX(360deg) rotateY(360deg) rotateY(360deg) rotateX(360deg) rotateZ(360deg) rotateZ(360deg);
-  transition: transform 1s ease;
+.dice1{
+  position: relative;
+  top: 55px;
 }
 
 .dice2{
@@ -107,15 +138,16 @@ align-self: flex-end;
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  border: 5px solid #A6CE3A;
+  border: 5px solid #cc80ff;
   margin-right: 7px;
 }
 
-.pieces{
+.piece1{
   height: 30px;
   width: 30px;
-  position: relative;
-  top: 450px;
+  position:absolute;
+  top: -14px;
+  left: 50px;
   font-weight: 1000;
   color: white;
   text-align: center;
@@ -125,6 +157,70 @@ align-self: flex-end;
   border-radius: 50%;
  box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
 
+}
+
+.pieceBox1{
+  height: 5px;
+  width: 43px;
+  background-color: #ff8080;
+  text-align: right;
+  border:3px solid #ff0000;
+  position: relative;
+  top: 192px;
+  left: -107px;
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+}
+
+.pieceCircle1{
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  top: -21px;
+  left: 43px;
+  border-radius: 50%;
+  border:5px solid #ff0000;
+   box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
+}
+
+.piece2{
+  height: 30px;
+  width: 30px;
+  position: relative;
+  top: -13px;
+  left: 50px;
+  font-weight: 1000;
+  color: white;
+  text-align: center;
+  transform: rotate(45deg);
+  font-size: 25px;
+  background-color: #751aff;
+  border-radius: 50%;
+ box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
+}
+
+.pieceBox2{
+  height: 5px;
+  width: 43px;
+  background-color: #cc80ff;
+  text-align: right;
+  border:3px solid #9900ff;
+  position: relative;
+  top: 290px;
+  left: -107px;
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+}
+
+.pieceCircle2{
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  top: -21px;
+  left: 43px;
+  border-radius: 50%;
+  border:5px solid #9900ff;
+   box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
 }
 
 .player1{
@@ -142,7 +238,7 @@ align-self: flex-end;
   left: 100px;
   height: 60px;
   border-radius: 50px 14px 14px 50px;;
-  border:5px solid #009900;
+  border:5px solid #9900ff;
 }
 
 .players{
@@ -165,12 +261,7 @@ align-self: flex-end;
   transform: rotate(45deg);
   font-size: 25px;
    box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
-   /* transform: translateX(80px) translateY(16px);
-   transition: transform 500ms linear; */
-   /* animation: start 1000ms ease; */
-  /* position: absolute;
-  top:875px;
-  left: 95px; */
+
 }
 .player{
   position: relative;
@@ -184,24 +275,8 @@ align-self: flex-end;
   transform: rotate(45deg);
   border-radius: 50%;
    box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
-  /* position: absolute;
-  top:835px;
-  left: 95px; */
+
 }
-
-/* @keyframes start {
-    0%{
-      left: 0px;
-      top: 0px;
-    }
-    100%{
-      left: 80px;
-      top: 10px;
-      transform: rotate(0deg);
-    }
-
-} */
-
 
 
 .right .column {
@@ -228,13 +303,23 @@ display: flex;
   width: 20px;
   height: 20px;
   padding: 9px;
-  background-color: tomato;
+  background-color: red;
   border-radius: 10%;
   border:1px solid rgba(0,0,0,.5);
   color: black;
   text-align: center;
   box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
 }
+
+.side:hover{
+  transform: scale3d(1.2,1.2,1.2);
+  transition: transform 100ms ease-in-out;
+}
+
+.side1{
+  background-color: #751aff;
+}
+
 
 
 .top{
@@ -251,3 +336,24 @@ display: flex;
 .top .column:nth-of-type(2) {
 justify-content: center;
 }
+
+.traclass{
+  transition: transform 700ms ease-in-out;
+}
+
+/* .firstmove1{
+  position:relative;
+  transform: translateY(288px);
+  transition: transform 500ms ease-in-out;
+}
+
+.firstmove2{
+  position:absolute;
+  transform: translateY(180px);
+  transition: transform 500ms ease-in-out;
+}
+.gamemoves{
+ position: absolute;
+ transform: translateX(57px) translateY(180px);
+ transition: transform 500ms ease-in-out;
+} */
