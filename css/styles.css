@@ -62,6 +62,12 @@
   perspective: 3000px;
 }
 
+.diceouter{
+  position: absolute;
+
+}
+
+
 .dice1{
   position: relative;
   top: 55px;
@@ -224,58 +230,35 @@ align-self: flex-end;
 }
 
 .player1{
-  margin-bottom: 40px;
+  position: relative;
+  width: 150px;
   top: 90px;
-  left: 100px;
+  left: -261px;
   height: 60px;
   border-radius: 50px 14px 14px 50px;;
   border:5px solid #ff0000;
 }
 
+.play1{
+  position: absolute;
+}
+
 .player2{
-  margin: 0;
-  top: 190px;
-  left: 100px;
+  position: relative;
+  width: 150px;
+  top: 270px;
+  left: -261px;
   height: 60px;
   border-radius: 50px 14px 14px 50px;;
   border:5px solid #9900ff;
 }
 
-.players{
+.playerdice{
   position: absolute;
-  top: 240px;
-  left: 120px;
+  top: 228px;
+  left: -263px;
   width: 160px;
-}
-
-.player{
-  position: relative;
-  height: 30px;
-  width: 30px;
-  background-color: red;
-  border-radius: 50%;
-  margin: 4px 0;
-  font-weight: 1000;
-  color: white;
-  text-align: center;
-  transform: rotate(45deg);
-  font-size: 25px;
-   box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
-
-}
-.player{
-  position: relative;
-  height: 30px;
-  width: 30px;
-  background: blue;
-  font-size: 25px;
-  font-weight: 1000;
-  color: white;
-  text-align: center;
-  transform: rotate(45deg);
-  border-radius: 50%;
-   box-shadow: 1px 4px 3px #3f3f3f, inset -1px -6px 12px 0.4px #272626 ;
-
+  z-index: 1;
 }
 
 
@@ -340,20 +323,3 @@ justify-content: center;
 .traclass{
   transition: transform 700ms ease-in-out;
 }
-
-/* .firstmove1{
-  position:relative;
-  transform: translateY(288px);
-  transition: transform 500ms ease-in-out;
-}
-
-.firstmove2{
-  position:absolute;
-  transform: translateY(180px);
-  transition: transform 500ms ease-in-out;
-}
-.gamemoves{
- position: absolute;
- transform: translateX(57px) translateY(180px);
- transition: transform 500ms ease-in-out;
-} */
