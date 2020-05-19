@@ -73,16 +73,6 @@
   top: 55px;
 }
 
-.dice2{
-  position: relative;
-  top: -25px;
-  left: 23.5px;
-  padding: 16px 19px;
-  text-align: center;
-  border-radius: 7px;
-  border: 5px solid #ff8080;
-  margin-left: 0px;
-}
 
 
 .dot {
@@ -113,6 +103,58 @@ align-items: center;
   border-radius: 10px;
 }
 
+@media only screen and (max-width:768px) {
+  .dice{
+    position: relative;
+    top:368px;
+    left: 420px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    transform-style: preserve-3d;
+    perspective: 3000px;
+  }
+
+  .diceouter{
+    position: absolute;
+
+  }
+
+  .dice1{
+    position: relative;
+    left: 545px;
+  }
+
+
+  .player1{
+    position: relative;
+    width: 150px;
+    top: 90px;
+    left: -261px;
+    height: 60px;
+    border-radius: 50px 14px 14px 50px;;
+    border:5px solid #ff0000;
+  }
+
+  .play1{
+    position: absolute;
+    left: 400px;
+    top: 500px;
+  }
+
+  .player2{
+    position: relative;
+    width: 150px;
+    top: 200px;
+    left: -261px;
+    height: 60px;
+    border-radius: 50px 14px 14px 50px;;
+    border:5px solid #9900ff;
+    transform: translateX(195px) translateY(-110px) rotateY(180deg) ;
+  }
+
+  }
 
 
 .left{

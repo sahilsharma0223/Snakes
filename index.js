@@ -1,7 +1,6 @@
 var diceMove = 0;
 var diceRolled1 = 0;
 var diceRolled2 = 0;
-var reEntry = 0;
 var x = 0;
 var y = 0;
 var p = 0;
@@ -17,7 +16,37 @@ var prevx = 0;
 $(".dice").click(function() {
   prev = diceNumber;
   diceNumber = Math.floor(Math.random() * 6 + 1);
-
+//   if(g==0){
+//       diceNumber=6;
+//       g=1;
+//   }
+//   else if(g==1){
+//     diceNumber=4;
+//     g=2;
+//   }
+//   else if(g==2){
+//     diceNumber=6;
+//     g=3;
+//   }
+//   else if(g==3){
+//     diceNumber=4;
+//     g=4;
+//   }
+//   else if(g==4){
+//     diceNumber=2;
+// g=5;
+//   }
+//   else if(g==5){
+//     diceNumber=6;
+//     g=6;
+//   }
+//   else if(g==6){
+//     diceNumber=6;
+//     g=7;
+//   }
+//   else if (g==7){
+//     diceNumber=5;
+//   }
   var animation = "animation" + diceNumber;
 
   $(".dice").addClass("animations");
@@ -44,18 +73,23 @@ $(".dice").click(function() {
         diceMove = 0;
         console.log(diceMove);
       }
+
     }, 800);
 
   }, 400);
 
   ladders();
 
+  console.log(diceMove);
+
   if (diceMove === 0) {
+    console.log(x);
+    console.log(y);
     if (diceNumber === 6 && diceRolled1 === 0) {
       $(".piece1").css("transform", "translate(-10px, 288px)");
-      $(".piece1").toggleClass("traclass");
+      $(".piece1").addClass("traclass");
       diceRolled1 = 1;
-      reEntry = 0;
+
     } else if (diceRolled1 === 1) {
       y = 288 - u * 52;
       if (u % 2 == 0) {
@@ -65,7 +99,8 @@ $(".dice").click(function() {
         x = x - 52 * diceNumber;
       }
 
-
+      console.log(x);
+      console.log(y);
       if (x >= 0 && x <= 520 && u % 2 == 0) {
         $(".piece1").css("transform", "translate(" + x + "px," + y + "px )");
         $(".piece1").addClass("traclass");
@@ -115,11 +150,13 @@ $(".dice").click(function() {
     }
 
   } else {
+    console.log(p);
+    console.log(q);
     if (diceNumber === 6 && diceRolled2 === 0) {
       $(".piece2").css("transform", "translate(-10px, 180px)");
-      $(".piece2").toggleClass("traclass");
+      $(".piece2").addClass("traclass");
       diceRolled2 = 1;
-      reEntry = 0;
+
     } else if (diceRolled2 === 1) {
 
       q = 180 - v * 52;
@@ -129,6 +166,8 @@ $(".dice").click(function() {
       } else {
         p = p - 52 * diceNumber;
       }
+      console.log(p);
+      console.log(q);
 
       if (p >= 0 && p <= 520 && v % 2 == 0) {
         $(".piece2").css("transform", "translate(" + p + "px," + q + "px )");
@@ -184,24 +223,47 @@ $(".dice").click(function() {
 
 function cross() {
   console.log(diceMove);
+  console.log(x);
+  console.log(y);
+  console.log(p);
+  console.log(q);
   if (prevx === prevy && diceMove === 0) {
-    $(".piece2").css("transform", "translate(0,0)");
-    $(".piece2").addClass("traclass");
+    setTimeout(function(){
+      $(".piece2").css("transform", "translate(0,0)");
+    },600);
     diceRolled2 = 0;
-    diceMove = 1;
+    p=0;
+    q=0;
+    v=0;
+    if(diceNumber!=6){
+      diceMove = 1;
+    }
+    else{
+      diceMove = 0;
+    }
     prevy = 0;
   } else if (prevx === prevy && diceMove === 1) {
-    $(".piece1").css("transform", "translate(0,0)");
-    $(".piece1").addClass("traclass");
+    setTimeout(function(){
+      $(".piece1").css("transform", "translate(0,0)");
+
+    },600);
+    x=0;
+    y=0;
+    u=0;
     diceRolled1 = 0;
-    diceMove = 0;
+    if(diceNumber!=6){
+      diceMove = 0;
+    }
+    else{
+      diceMove = 1;
+    }
     prevx = 0;
-  } else if (reEntry === 1) {
-
-    reEntry = 0;
-
   }
 
+  console.log(x);
+  console.log(y);
+  console.log(p);
+  console.log(q);
 }
 
 
