@@ -216,6 +216,8 @@ align-self: flex-end;
 
 }
 
+
+
 .pieceBox1{
   height: 5px;
   width: 43px;
@@ -373,4 +375,62 @@ justify-content: center;
 
 .traclass{
   transition: transform 700ms ease-in-out;
+}
+
+
+.ladder1x{
+  transition: transform 800ms ease;
+}
+
+.ladder1y{
+  transition: transform 550ms ease;
+}
+
+
+.ladder4x{
+  transition: transform 700ms ease;
+}
+
+.ladder4y{
+  transition: transform 550ms ease;
+}
+
+.ladder9x{
+  transition: transform 800ms ease;
+}
+
+.ladder9y{
+  transition: transform 730ms ease;
+}
+
+.ladder51x{
+  transition: transform 660ms linear;
+}
+
+.ladder51y{
+  transition: transform 800ms linear;
+}
+
+.ladder28x{
+  transition: transform 650ms ease-in-out;
+}
+
+.ladder28y{
+  transition: transform 900ms ease-in-out;
+}
+
+.ladder28x1{
+  transition: transform 660ms ease-in-out;
+}
+
+.ladder28y1{
+  transition: transform 700ms ease-in-out;
+}
+
+.ladder28x2{
+  transition: transform 600ms ease-in-out;
+}
+
+.ladder28y2{
+  transition: transform 740ms ease-in-out;
 }
