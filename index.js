@@ -294,6 +294,7 @@ $(".dice").click(function() {
         $(".piece1").css("transform", "translate(0,-180px)");
         setTimeout(function() {
           alert("player red won the game");
+          location.reload();
         }, 800);
 
       } else if (pos1 > 101) {
@@ -437,6 +438,7 @@ $(".dice").click(function() {
         $(".piece2").css("transform", "translate(0,-288px)");
         setTimeout(function() {
           alert("Player Purple won the game");
+         location.reload();
         }, 800);
       } else if (pos1 > 101) {
         prev61=0;

@@ -29,6 +29,10 @@
   transition: transform 100ms ease;
 }
 
+body{
+  background-image: url("images/main2.png");
+}
+
 .bottom{
   display: flex;
    justify-content : space-between;
@@ -99,9 +103,20 @@ align-items: center;
   background-image: url("images/Snakes.jpg");
   background-size: contain;
   background-repeat: no-repeat;
-  border: 10px solid black;
+  border: 10px solid #165470;
   border-radius: 10px;
 }
+
+.homeImg{
+   position: absolute;
+   top: -8px;
+   left: -61px;
+   z-index: 3;
+}
+.homeDiv{
+  position: absolute;
+}
+
 @media only screen and (min-width:501px) and (max-width:1100px) {
   .grid-container{
     margin: 0 200px;
@@ -109,9 +124,13 @@ align-items: center;
 }
 
 @media only screen and (max-width:500px) {
+  body{
+    background-image:url("images/main1.jpeg");
+  }
   .grid-container{
     margin: 0 -8px;
-    margin-top: -8px;
+    margin-top: 50%;
+    margin-bottom: 50%;
   }
   .dice{
     position: relative;
@@ -144,12 +163,11 @@ align-items: center;
     height: 60px;
     border-radius: 50px 14px 14px 50px;;
     border:5px solid #ff0000;
+    transform: translateX(327px) translateY(430px);
   }
 
   .play1{
     position: absolute;
-    left: 400px;
-    top: 500px;
   }
 
   .player2{
@@ -160,7 +178,7 @@ align-items: center;
     height: 60px;
     border-radius: 50px 14px 14px 50px;;
     border:5px solid #9900ff;
-    transform: translateX(195px) translateY(-110px) rotateY(180deg) ;
+    transform: translateX(532px) translateY(320px) rotateY(180deg) ;
   }
 
   }
