@@ -404,11 +404,11 @@ justify-content: center;
 }
 
 .ladder51x{
-  transition: transform 660ms linear;
+  transition: transform 660ms ease;
 }
 
 .ladder51y{
-  transition: transform 800ms linear;
+  transition: transform 800ms ease;
 }
 
 .ladder28x{
