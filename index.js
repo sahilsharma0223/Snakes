@@ -20,11 +20,11 @@ var prevx = 0;
 var prev61 = 0;
 var prev62 = 0;
 var dicePos = Math.floor(Math.random() * 2 + 1);
-if (dicePos == 1) {
-  $(".dice").addClass("dice1");
-  $(".side").addClass("side1");
-  diceMove = 1;
-}
+// if (dicePos == 1) {
+//   $(".dice").addClass("dice1");
+//   $(".side").addClass("side1");
+//   diceMove = 1;
+// }
 
 $(".dice").click(function() {
   $(".piece1").addClass("traclass");
@@ -32,45 +32,47 @@ $(".dice").click(function() {
   prev = diceNumber;
   // diceNumber =6-f;
   // f=2;
-  diceNumber = Math.floor(Math.random() * 6 + 1);
-  // if (g == 0) {
-  //   diceNumber = 6;
-  //   g = 1;
-  // } else if (g == 1) {
-  //   diceNumber = 30;
-  //   g = 2;
-  // } else if (g == 2) {
-  //   diceNumber = 1;
-  //   g = 3;
-  // } else if (g == 3) {
-  //   diceNumber = 30;
-  //   g = 4;
-  // } else if (g == 4) {
-  //   diceNumber = 2;
-  //   g = 5;
-  // } else if (g == 5) {
-  //   diceNumber = 10;
-  //   g = 6;
-  // } else if (g == 6) {
-  //   diceNumber = 4;
-  //   g = 7;
-  // }
-  // else if (g == 7) {
-  //   diceNumber = 10;
-  //   g = 8;
-  // } else if (g == 8) {
-  //   diceNumber = 3;
-  //   g = 9;
-  // } else if (g == 9) {
-  //   diceNumber = 8;
-  //   g = 10;
-  // } else if (g == 10) {
-  //   diceNumber = 3;
-  //   g = 11;
-  // } else if (g == 11) {
-  //   diceNumber = 6;
-  //   g = 12;
-  // } else if (g == 12) {
+  // diceNumber = Math.floor(Math.random() * 6 + 1);
+  if (g == 0) {
+    diceNumber = 6;
+    g = 1;
+  } else if (g == 1) {
+    diceNumber = 30;
+    g = 2;
+  } else if (g == 2) {
+    diceNumber = 1;
+    g = 3;
+  } else if (g == 3) {
+    diceNumber = 20;
+    g = 4;
+  } else if (g == 4) {
+    diceNumber = 2;
+    g = 5;
+  } else if (g == 5) {
+    diceNumber = 20;
+    g = 6;
+  } else if (g == 6) {
+    diceNumber = 4;
+    g = 7;
+  }
+  else if (g == 7) {
+    diceNumber = 20;
+    g = 8;
+  } else if (g == 8) {
+    diceNumber = 3;
+    g = 9;
+  } else if (g == 9) {
+    diceNumber = 4;
+    g = 10;
+  }
+  else if (g == 10) {
+    diceNumber = 3;
+    g = 11;
+  } else if (g == 11) {
+    diceNumber = 4;
+    g = 12;
+  }
+   // else if (g == 12) {
   //   diceNumber = 5;
   //   g = 13;
   // }
@@ -287,6 +289,7 @@ $(".dice").click(function() {
 
         }
         ladders();
+        snakes();
         if (diceRolled1 === 1 && diceRolled2 === 1) {
           cross();
         }
@@ -431,6 +434,7 @@ $(".dice").click(function() {
 
         }
         ladders();
+        snakes();
         if (diceRolled1 === 1 && diceRolled2 === 1) {
           cross();
         }
@@ -502,6 +506,32 @@ function cross() {
   console.log(q);
 }
 
+
+
+function snakes(){
+  if(pos1==98){
+    setTimeout(function(){
+
+        $(".piece1").removeClass("traclass");
+        $(".piece1").css("visibility","hidden");
+        $(".testt").addClass("redanimation snake98");
+          $(".redanimation").removeClass("testt");
+        setTimeout(function(){
+          $(".redanimation").addClass("testt");
+          $(".testt").removeClass("redanimation snake98");
+          $(".piece1").css("transform","translate(156px,-76px)");
+          $(".piece1").css("visibility","visible");
+
+          x = 156;
+          y = -76;
+          prevx = 78;
+          u = 7;
+          pos1 = 78;
+
+        },700);
+      },1000);
+    }
+}
 
 
 
