@@ -1,3 +1,4 @@
+alert("click on dice when it shows 1 dot.");
 var diceMove = 0;
 var diceRolled1 = 0;
 var diceRolled2 = 0;
@@ -20,11 +21,11 @@ var prevx = 0;
 var prev61 = 0;
 var prev62 = 0;
 var dicePos = Math.floor(Math.random() * 2 + 1);
-// if (dicePos == 1) {
-//   $(".dice").addClass("dice1");
-//   $(".side").addClass("side1");
-//   diceMove = 1;
-// }
+if (dicePos == 1) {
+  $(".dice").addClass("dice1");
+  $(".side").addClass("side1");
+  diceMove = 1;
+}
 
 $(".dice").click(function() {
   $(".piece1").addClass("traclass");
@@ -32,47 +33,46 @@ $(".dice").click(function() {
   prev = diceNumber;
   // diceNumber =6-f;
   // f=2;
-  // diceNumber = Math.floor(Math.random() * 6 + 1);
-  if (g == 0) {
-    diceNumber = 6;
-    g = 1;
-  } else if (g == 1) {
-    diceNumber = 30;
-    g = 2;
-  } else if (g == 2) {
-    diceNumber = 1;
-    g = 3;
-  } else if (g == 3) {
-    diceNumber = 20;
-    g = 4;
-  } else if (g == 4) {
-    diceNumber = 2;
-    g = 5;
-  } else if (g == 5) {
-    diceNumber = 20;
-    g = 6;
-  } else if (g == 6) {
-    diceNumber = 4;
-    g = 7;
-  }
-  else if (g == 7) {
-    diceNumber = 20;
-    g = 8;
-  } else if (g == 8) {
-    diceNumber = 3;
-    g = 9;
-  } else if (g == 9) {
-    diceNumber = 4;
-    g = 10;
-  }
-  else if (g == 10) {
-    diceNumber = 3;
-    g = 11;
-  } else if (g == 11) {
-    diceNumber = 4;
-    g = 12;
-  }
-   // else if (g == 12) {
+  diceNumber = Math.floor(Math.random() * 6 + 1);
+  // if (g == 0) {
+  //   diceNumber = 6;
+  //   g = 1;
+  // } else if (g == 1) {
+  //   diceNumber = 30;
+  //   g = 2;
+  // } else if (g == 2) {
+  //   diceNumber = 1;
+  //   g = 3;
+  // } else if (g == 3) {
+  //   diceNumber = 20
+  //   ;
+  //   g = 4;
+  // } else if (g == 4) {
+  //   diceNumber = 2;
+  //   g = 5;
+  // } else if (g == 5) {
+  //   diceNumber = 20;
+  //   g = 6;
+  // } else if (g == 6) {
+  //   diceNumber = 1;
+  //   g = 7;
+  // } else if (g == 7) {
+  //   diceNumber = 11;
+  //   g = 8;
+  // } else if (g == 8) {
+  //   diceNumber = 3;
+  //   g = 9;
+  // } else if (g == 9) {
+  //   diceNumber = 17;
+  //   g = 10;
+  // } else if (g == 10) {
+  //   diceNumber = 3;
+  //   g = 11;
+  // } else if (g == 11) {
+  //   diceNumber = 7;
+  //   g = 12;
+  // }
+  // else if (g == 12) {
   //   diceNumber = 5;
   //   g = 13;
   // }
@@ -154,15 +154,15 @@ $(".dice").click(function() {
       } else if (diceNumber == 6 && prev61 == 6) {
         prev62 = 6;
         diceNumber = 6;
-        pos1+=diceNumber;
+        pos1 += diceNumber;
 
       } else if (diceNumber == 6) {
         prev61 = 6;
         diceNumber = 6;
-        pos1+=diceNumber;
+        pos1 += diceNumber;
       } else {
         pos1 += diceNumber;
-        diceNumber=prev61+prev62+diceNumber;
+        diceNumber = prev61 + prev62 + diceNumber;
       }
       console.log(firstSix);
       console.log(prev61);
@@ -197,7 +197,7 @@ $(".dice").click(function() {
           $(".piece1").css("transform", "translate(" + x + "px," + y + "px )");
           prevx += diceNumber;
 
-        }  else if (x >= 520) {
+        } else if (x >= 520) {
 
           console.log(x);
           console.log(y);
@@ -215,13 +215,12 @@ $(".dice").click(function() {
             setTimeout(function() {
               console.log(x);
               console.log(y);
-              if(x>0){
+              if (x > 0) {
                 $(".piece1").css("transform", "translate(" + x + "px, " + y + "px)");
-              }
-              else{
+              } else {
                 u++;
-                x= 52 + 52*(pos1-10*u -1);
-                y= 288 -52*(u);
+                x = 52 + 52 * (pos1 - 10 * u - 1);
+                y = 288 - 52 * (u);
                 $(".pieceouter1").css("transform", "translate(0,0)");
                 $(".piece1").css("transform", "translate(52px, " + (y + 52) + "px)");
                 $(".piece1").addClass("traclass");
@@ -242,7 +241,7 @@ $(".dice").click(function() {
 
           u++;
           prevx += diceNumber;
-        }  else if (x <= 0) {
+        } else if (x <= 0) {
 
           u++;
           x = 52 + 52 * (diceNumber - (u * 10 + 1 - prevx));
@@ -259,14 +258,13 @@ $(".dice").click(function() {
             setTimeout(function() {
               console.log(x);
               console.log(y);
-              if(x<=520){
-                  $(".piece1").css("transform", "translate(" + x + "px, " + y + "px)");
-              }
-              else{
+              if (x <= 520) {
+                $(".piece1").css("transform", "translate(" + x + "px, " + y + "px)");
+              } else {
                 u++;
 
-               x = 520 - 52*(pos1-10*u-1);
-               y=288 - 52*u;
+                x = 520 - 52 * (pos1 - 10 * u - 1);
+                y = 288 - 52 * u;
                 $(".pieceouter1").css("transform", "translate(0,0)");
                 $(".piece1").css("transform", "translate(520px," + (y + 52) + "px)");
                 $(".piece1").addClass("traclass");
@@ -298,12 +296,12 @@ $(".dice").click(function() {
         setTimeout(function() {
           alert("player red won the game");
           location.reload();
-        }, 800);
+        }, 1000);
 
       } else if (pos1 > 101) {
         console.log(pos1);
-        prev61=0;
-        prev62=0;
+        prev61 = 0;
+        prev62 = 0;
         pos1 = pos1 - diceNumber;
         console.log(pos1);
         console.log(diceNumber);
@@ -330,14 +328,14 @@ $(".dice").click(function() {
       } else if (diceNumber == 6 && prev61 == 6) {
         prev62 = 6;
         diceNumber = 6;
-        pos2+=diceNumber;
+        pos2 += diceNumber;
       } else if (diceNumber == 6) {
         prev61 = 6;
         diceNumber = 6;
-        pos2+=diceNumber;
+        pos2 += diceNumber;
       } else {
         pos2 += diceNumber;
-        diceNumber=prev61+prev62+diceNumber;
+        diceNumber = prev61 + prev62 + diceNumber;
       }
       if (pos2 < 101 && diceNumber != 6) {
         prev61 = 0;
@@ -375,13 +373,12 @@ $(".dice").click(function() {
           setTimeout(function() {
             $(".piece2").css("transform", "translate(520px," + q + "px)");
             setTimeout(function() {
-              if(p>0){
-                  $(".piece2").css("transform", "translate(" + p + "px, " + q + "px)");
-              }
-              else{
+              if (p > 0) {
+                $(".piece2").css("transform", "translate(" + p + "px, " + q + "px)");
+              } else {
                 v++;
-                p= 52 + 52*(pos2-10*v -1);
-                q= 180 -52*(v);
+                p = 52 + 52 * (pos2 - 10 * v - 1);
+                q = 180 - 52 * (v);
                 $(".pieceouter2").css("transform", "translate(0,0)");
                 $(".piece2").css("transform", "translate(52px, " + (q + 52) + "px)");
                 $(".piece2").addClass("traclass");
@@ -408,13 +405,12 @@ $(".dice").click(function() {
           setTimeout(function() {
             $(".piece2").css("transform", "translate(52px, " + q + "px)");
             setTimeout(function() {
-              if(p<=520){
-                  $(".piece2").css("transform", "translate(" + p + "px, " + q + "px)");
-              }
-              else{
+              if (p <= 520) {
+                $(".piece2").css("transform", "translate(" + p + "px, " + q + "px)");
+              } else {
                 v++;
-                p = 520 - 52*(pos2-10*v-1);
-                q = 180 - 52*v;
+                p = 520 - 52 * (pos2 - 10 * v - 1);
+                q = 180 - 52 * v;
                 $(".pieceouter2").css("transform", "translate(0,0)");
                 $(".piece2").css("transform", "translate(520px," + (q + 52) + "px)");
                 $(".piece2").addClass("traclass");
@@ -442,11 +438,11 @@ $(".dice").click(function() {
         $(".piece2").css("transform", "translate(0,-288px)");
         setTimeout(function() {
           alert("Player Purple won the game");
-         location.reload();
-        }, 800);
+          location.reload();
+        }, 1000);
       } else if (pos1 > 101) {
-        prev61=0;
-        prev62=0;
+        prev61 = 0;
+        prev62 = 0;
         pos2 -= diceNumber;
         if (diceNumber == 6) {
           diceMove = 1;
@@ -508,44 +504,581 @@ function cross() {
 
 
 
-function snakes(){
-  if(pos1==98){
-    setTimeout(function(){
+function snakes() {
 
-        $(".piece1").removeClass("traclass");
-        $(".piece1").css("visibility","hidden");
-        $(".testt").addClass("redanimation snake98");
-          $(".redanimation").removeClass("testt");
-        setTimeout(function(){
-          $(".redanimation").addClass("testt");
-          $(".testt").removeClass("redanimation snake98");
-          $(".piece1").css("transform","translate(156px,-76px)");
-          $(".piece1").css("visibility","visible");
-
-          x = 156;
-          y = -76;
-          prevx = 78;
-          u = 7;
-          pos1 = 78;
-
-        },700);
-      },1000);
+  if (pos1 == 16) {
+    if (diceNumber >= 6 && diceNumber <= 10) {
+      time = 2000;
     }
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake16");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake16");
+        $(".piece1").css("transform", "translate(312px,288px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 312;
+        y = 288;
+        prevx = 6;
+        u = 0;
+        pos1 = 6;
+
+      }, 1000);
+    }, time - 700);
+  } else if (pos1 == 47) {
+
+    if(diceNumber>=7&&diceNumber<=10){
+      time=3000;
+    }
+    else if(diceNumber==17){
+      time=4400;
+    }
+
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake47");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake47");
+        $(".piece1").css("transform", "translate(312px,184px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 312;
+        y = 184;
+        prevx = 26;
+        u = 2;
+        pos1 = 26;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos1 == 49) {
+
+    if(diceNumber>=9&&diceNumber<=12){
+      time=3000;
+    }
+
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake49");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake49");
+        $(".piece1").css("transform", "translate(520px,184px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 520;
+        y = 184;
+        prevx = 30;
+        u = 2;
+        pos1 = 30;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos1 == 56) {
+
+  if(diceNumber>=7&&diceNumber<=10){
+    time= 3000;
+  }
+  else if(diceNumber==16||diceNumber==17){
+    time = 4400;
+  }
+
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake56");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake56");
+        $(".piece1").css("transform", "translate(416px,28px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 416;
+        y = 28;
+        prevx = 53;
+        u = 5;
+        pos1 = 53;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos1 == 62) {
+
+   if(diceNumber>=2&&diceNumber<=11){
+     time = 2800;
+   }
+   else if(diceNumber>=12){
+     time = 4300;
+   }
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake62");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake62");
+        $(".piece1").css("transform", "translate(104px,236px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 104;
+        y = 236;
+        prevx = 19;
+        u = 1;
+        pos1 = 19;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos1 == 63) {
+
+    if(diceNumber>=3&&diceNumber<=12){
+      time = 2800;
+    }
+    else if(diceNumber>=13){
+      time = 4300;
+    }
+
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake63");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake63");
+        $(".piece1").css("transform", "translate(52px,28px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 52;
+        y = 28;
+        prevx = 60;
+        u = 5;
+        pos1 = 60;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos1 == 87) {
+
+    if(diceNumber>=7&&diceNumber<=11){
+      time=2900;
+    }
+    else if(diceNumber==17){
+      time=4300;
+    }
+
+
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake87");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake87");
+        $(".piece1").css("transform", "translate(208px,184px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 208;
+        y = 184;
+        prevx = 24;
+        u = 2;
+        pos1 = 24;
+
+      }, 1800);
+    }, time-700);
+  } else if (pos1 == 93) {
+
+if(diceNumber>=3&&diceNumber<10){
+  time = 2900;
+}
+else if(diceNumber>=13){
+  time = 4300;
+}
+
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake93");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake93");
+        $(".piece1").css("transform", "translate(416px,-76px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 416;
+        y = -76;
+        prevx = 73;
+        u = 7;
+        pos1 = 73;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos1 == 95) {
+
+ if(diceNumber>=5&&diceNumber<=14){
+   time = 2900;
+ }
+ else if(diceNumber>=15){
+   time = 4300;
+ }
+
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake95");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake95");
+        $(".piece1").css("transform", "translate(312px,-76px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 312;
+        y = -76;
+        prevx = 75;
+        u = 7;
+        pos1 = 75;
+
+      }, 1000);
+    }, time-700);
+  }
+
+  else if (pos1 == 98) {
+
+if(diceNumber>=8){
+  time=2900;
+}
+
+    setTimeout(function() {
+
+      $(".piece1").removeClass("traclass");
+      $(".piece1").css("visibility", "hidden");
+      $(".testt").addClass("redanimation snake98");
+      $(".redanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".redanimation").addClass("testt");
+        $(".testt").removeClass("redanimation snake98");
+        $(".piece1").css("transform", "translate(156px,-76px)");
+        $(".piece1").css("visibility", "visible");
+
+        x = 156;
+        y = -76;
+        prevx = 78;
+        u = 7;
+        pos1 = 78;
+
+      }, 900);
+    }, time-700);
+  }
+
+  else if (pos2 == 16) {
+    if (diceNumber >= 6 && diceNumber <= 10) {
+      time = 2000;
+    }
+    setTimeout(function() {
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake16");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake16");
+        $(".piece2").css("transform", "translate(312px,180px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 312;
+        q = 180;
+        prevy = 6;
+        v = 0;
+        pos2 = 6;
+
+      }, 1000);
+    }, time-700);
+  }
+
+  else if (pos2 == 47) {
+
+    if(diceNumber>=7&&diceNumber<=10){
+      time=3000;
+    }
+    else if(diceNumber==17){
+      time=4400;
+    }
+
+
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake47");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake47");
+        $(".piece2").css("transform", "translate(312px,76px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 312;
+        q = 76;
+        prevy = 26;
+        v = 2;
+        pos2 = 26;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos2 == 49) {
+
+    if(diceNumber>=9&&diceNumber<=12){
+      time=3000;
+    }
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake49");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake49");
+        $(".piece2").css("transform", "translate(520px,76px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 520;
+        q = 76;
+        prevy = 30;
+        v = 2;
+        pos2 = 30;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos2 == 56) {
+
+    if(diceNumber>=7&&diceNumber<=10){
+      time= 3000;
+    }
+    else if(diceNumber==16||diceNumber==17){
+      time = 4400;
+    }
+
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake56");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake56");
+        $(".piece2").css("transform", "translate(416px,-80px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 416;
+        q = -80;
+        prevy = 53;
+        v = 5;
+        pos2 = 53;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos2 == 62) {
+
+    if(diceNumber>=2&&diceNumber<=11){
+      time = 2800;
+    }
+    else if(diceNumber>=12){
+      time = 4300;
+    }
+
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake62");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake62");
+        $(".piece2").css("transform", "translate(104px,128px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 104;
+        q = 128;
+        prevy = 19;
+        v = 1;
+        pos2 = 19;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos2 == 63) {
+
+    if(diceNumber>=3&&diceNumber<=12){
+      time = 2800;
+    }
+    else if(diceNumber>=13){
+      time = 4300;
+    }
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake63");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake63");
+        $(".piece2").css("transform", "translate(52px,-80px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 52;
+        q = -80;
+        prevy = 60;
+        v = 5;
+        pos2 = 60;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos2 == 87) {
+
+    if(diceNumber>=7&&diceNumber<=11){
+      time=2900;
+    }
+    else if(diceNumber==17){
+      time=4300;
+    }
+
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake87");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake87");
+        $(".piece2").css("transform", "translate(208px,76px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 208;
+        q = 76;
+        prevy = 24;
+        v = 2;
+        pos2 = 24;
+
+      }, 1800);
+    }, time-700);
+  } else if (pos2 == 93) {
+
+    if(diceNumber>=3&&diceNumber<10){
+      time = 2900;
+    }
+    else if(diceNumber>=13){
+      time = 4300;
+    }
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake93");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake93");
+        $(".piece2").css("transform", "translate(416px,-184px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 416;
+        q = -184;
+        prevy = 73;
+        v = 7;
+        pos2 = 73;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos2 == 95) {
+
+    if(diceNumber>=5&&diceNumber<=14){
+      time = 2900;
+    }
+    else if(diceNumber>=15){
+      time = 4300;
+    }
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake95");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake95");
+        $(".piece2").css("transform", "translate(312px,-184px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 312;
+        q = -184;
+        prevy = 75;
+        v = 7;
+        pos2 = 75;
+
+      }, 1000);
+    }, time-700);
+  } else if (pos2 == 98) {
+
+    if(diceNumber>=8){
+      time=2900;
+    }
+    setTimeout(function() {
+
+      $(".piece2").removeClass("traclass");
+      $(".piece2").css("visibility", "hidden");
+      $(".testt").addClass("purpleanimation snake98");
+      $(".purpleanimation").removeClass("testt");
+      setTimeout(function() {
+        $(".purpleanimation").addClass("testt");
+        $(".testt").removeClass("purpleanimation snake98");
+        $(".piece2").css("transform", "translate(156px,-184px)");
+        $(".piece2").css("visibility", "visible");
+
+        p = 156;
+        q = -184;
+        prevy = 78;
+        v = 7;
+        pos2 = 78;
+
+      }, 900);
+    }, time-700);
+  }
 }
 
 
 
 function ladders() {
 
-if(diceNumber==11){
-  time = 2900;
-}
-else if(diceNumber>=12&&diceNumber<=17){
-  time = 3000;
-}
-else{
-  time = 1500;
-}
+  if (diceNumber == 11) {
+    time = 2900;
+  } else if (diceNumber >= 12 && diceNumber <= 17) {
+    time = 3000;
+  } else {
+    time = 1500;
+  }
 
   if (pos1 == 1) {
     setTimeout(function() {
@@ -631,12 +1164,10 @@ else{
       prevx = 42;
       u = 4;
       pos1 = 42;
-    },time);
-  }
-
-  else if (pos1 == 28) {
-    if(diceNumber>=8&&diceNumber<11){
-      time=2900;
+    }, time);
+  } else if (pos1 == 28) {
+    if (diceNumber >= 8 && diceNumber < 11) {
+      time = 2900;
     }
     setTimeout(function() {
       $(".piece1").removeClass("traclass");
@@ -679,42 +1210,37 @@ else{
           }, 800);
         }, 900);
       }, 800);
-    }, time-700);
-}
-
-  else if (pos1 == 36) {
-  if(diceNumber>=6&&diceNumber<11){
-    time = 2900;
-  }
-  else if(diceNumber==17||diceNumber==16){
-    time = 4300;
-  }
+    }, time - 700);
+  } else if (pos1 == 36) {
+    if (diceNumber >= 6 && diceNumber < 11) {
+      time = 2900;
+    } else if (diceNumber == 17 || diceNumber == 16) {
+      time = 4300;
+    }
+    setTimeout(function() {
+      console.log(x);
+      console.log(y);
+      $(".piece1").removeClass("traclass");
+      $(".pieceouter1").css("transform", "translateX(208px)");
+      $(".pieceouter1").addClass("ladder9y");
+      $(".piece1").css("transform", "translateY(80px)");
+      $(".piece1").addClass("ladder9x");
       setTimeout(function() {
         console.log(x);
         console.log(y);
-        $(".piece1").removeClass("traclass");
-        $(".pieceouter1").css("transform", "translateX(208px)");
-        $(".pieceouter1").addClass("ladder9y");
-        $(".piece1").css("transform", "translateY(80px)");
-        $(".piece1").addClass("ladder9x");
-        setTimeout(function() {
-          console.log(x);
-          console.log(y);
-          $(".pieceouter1").removeClass("ladder9y");
-          $(".piece1").removeClass("ladder9x");
-          $(".pieceouter1").css("transform", "translate(0,0)");
-          $(".piece1").css("transform", "translate(208px,80px)");
-        }, 700);
-        x = 208;
-        y = 80;
-        prevx = 44;
-        u = 4;
-        pos1 = 44;
-      }, time-700);
+        $(".pieceouter1").removeClass("ladder9y");
+        $(".piece1").removeClass("ladder9x");
+        $(".pieceouter1").css("transform", "translate(0,0)");
+        $(".piece1").css("transform", "translate(208px,80px)");
+      }, 700);
+      x = 208;
+      y = 80;
+      prevx = 44;
+      u = 4;
+      pos1 = 44;
+    }, time - 700);
 
-  }
-
-     else if (pos1 == 51) {
+  } else if (pos1 == 51) {
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -736,10 +1262,9 @@ else{
       prevx = 67;
       u = 6;
       pos1 = 67;
-    },time);
+    }, time);
 
-  }
-  else if (pos1 == 71) {
+  } else if (pos1 == 71) {
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -759,11 +1284,10 @@ else{
       u = 9;
       pos1 = 91;
     }, time);
-  }
-  else if (pos1 == 80) {
-  if(diceNumber==10){
-    time = 2900;
-  }
+  } else if (pos1 == 80) {
+    if (diceNumber == 10) {
+      time = 2900;
+    }
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -782,7 +1306,7 @@ else{
       prevx = 100;
       u = 9;
       pos1 = 100;
-    }, time-600);
+    }, time - 600);
   }
 
 
@@ -874,11 +1398,10 @@ else{
       v = 4;
       pos2 = 42;
     }, time);
-  }
-  else if (pos2 == 28) {
-   if(diceNumber>=8&&diceNumber<11){
-     time = 2900;
-   }
+  } else if (pos2 == 28) {
+    if (diceNumber >= 8 && diceNumber < 11) {
+      time = 2900;
+    }
     setTimeout(function() {
       $(".piece2").removeClass("traclass");
       $(".pieceouter2").css("transform", "translateX(375px)");
@@ -920,40 +1443,36 @@ else{
           }, 800);
         }, 900);
       }, 800);
-    }, time-700);
-}
-  else if (pos2 == 36) {
-    if(diceNumber>=6&&diceNumber<11){
+    }, time - 700);
+  } else if (pos2 == 36) {
+    if (diceNumber >= 6 && diceNumber < 11) {
       time = 2900;
-    }
-    else if(diceNumber==17||diceNumber==16){
+    } else if (diceNumber == 17 || diceNumber == 16) {
       time = 4300;
     }
+    setTimeout(function() {
+      console.log(x);
+      console.log(y);
+      $(".piece2").removeClass("traclass");
+      $(".pieceouter2").css("transform", "translateX(208px)");
+      $(".pieceouter2").addClass("ladder9y");
+      $(".piece2").css("transform", "translateY(-28px)");
+      $(".piece2").addClass("ladder9x");
       setTimeout(function() {
         console.log(x);
         console.log(y);
-        $(".piece2").removeClass("traclass");
-        $(".pieceouter2").css("transform", "translateX(208px)");
-        $(".pieceouter2").addClass("ladder9y");
-        $(".piece2").css("transform", "translateY(-28px)");
-        $(".piece2").addClass("ladder9x");
-        setTimeout(function() {
-          console.log(x);
-          console.log(y);
-          $(".pieceouter2").removeClass("ladder9y");
-          $(".piece2").removeClass("ladder9x");
-          $(".pieceouter2").css("transform", "translate(0,0)");
-          $(".piece2").css("transform", "translate(208px,-28px)");
-        }, 700);
-        p = 208;
-        q = -28;
-        prevy = 44;
-        v = 4;
-        pos2 = 44;
-      }, time-700);
-    }
-
-     else if (pos2 == 51) {
+        $(".pieceouter2").removeClass("ladder9y");
+        $(".piece2").removeClass("ladder9x");
+        $(".pieceouter2").css("transform", "translate(0,0)");
+        $(".piece2").css("transform", "translate(208px,-28px)");
+      }, 700);
+      p = 208;
+      q = -28;
+      prevy = 44;
+      v = 4;
+      pos2 = 44;
+    }, time - 700);
+  } else if (pos2 == 51) {
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -977,9 +1496,7 @@ else{
       pos2 = 67;
     }, time);
 
-  }
-
-  else if (pos2 == 71) {
+  } else if (pos2 == 71) {
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -998,12 +1515,10 @@ else{
       prevy = 91;
       v = 9;
       pos2 = 91;
-    }, time-600);
-  }
-
-  else if (pos2 == 80) {
-    if(diceNumber==10){
-      time=2900;
+    }, time - 600);
+  } else if (pos2 == 80) {
+    if (diceNumber == 10) {
+      time = 2900;
     }
     setTimeout(function() {
       console.log(x);
@@ -1023,6 +1538,6 @@ else{
       prevy = 100;
       v = 9;
       pos2 = 100;
-    }, time-600);
+    }, time - 600);
   }
 }
