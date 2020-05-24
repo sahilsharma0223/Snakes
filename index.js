@@ -1,4 +1,4 @@
-alert("click on dice when it shows 1 dot.");
+// alert("click on dice when it shows 1 dot.");
 var diceMove = 0;
 var diceRolled1 = 0;
 var diceRolled2 = 0;
@@ -8,7 +8,7 @@ var p = 0;
 var q = 0;
 var u = 0;
 var v = 0;
-var time = 0;
+var time = 800;
 var pos1 = 0;
 var pos2 = 0;
 var prevy = 0;
@@ -20,6 +20,7 @@ var g = 0;
 var prevx = 0;
 var prev61 = 0;
 var prev62 = 0;
+var m = 0;
 var dicePos = Math.floor(Math.random() * 2 + 1);
 if (dicePos == 1) {
   $(".dice").addClass("dice1");
@@ -28,6 +29,7 @@ if (dicePos == 1) {
 }
 
 $(".dice").click(function() {
+  time = 800;
   $(".piece1").addClass("traclass");
   $(".piece2").addClass("traclass");
   prev = diceNumber;
@@ -41,38 +43,36 @@ $(".dice").click(function() {
   //   diceNumber = 30;
   //   g = 2;
   // } else if (g == 2) {
-  //   diceNumber = 1;
+  //   diceNumber = 2;
   //   g = 3;
   // } else if (g == 3) {
-  //   diceNumber = 20
-  //   ;
+  //   diceNumber = 30;
   //   g = 4;
   // } else if (g == 4) {
   //   diceNumber = 2;
   //   g = 5;
   // } else if (g == 5) {
-  //   diceNumber = 20;
+  //   diceNumber = 10;
   //   g = 6;
   // } else if (g == 6) {
-  //   diceNumber = 1;
+  //   diceNumber = 3;
   //   g = 7;
   // } else if (g == 7) {
-  //   diceNumber = 11;
+  //   diceNumber = 1;
   //   g = 8;
   // } else if (g == 8) {
-  //   diceNumber = 3;
+  //   diceNumber = 6;
   //   g = 9;
   // } else if (g == 9) {
-  //   diceNumber = 17;
+  //   diceNumber = 0;
   //   g = 10;
   // } else if (g == 10) {
-  //   diceNumber = 3;
+  //   diceNumber = 30;
   //   g = 11;
   // } else if (g == 11) {
-  //   diceNumber = 7;
+  //   diceNumber = 1;
   //   g = 12;
-  // }
-  // else if (g == 12) {
+  // } else if (g == 12) {
   //   diceNumber = 5;
   //   g = 13;
   // }
@@ -93,15 +93,16 @@ $(".dice").click(function() {
   //    g = 17;
   //  }
   var animation = "animation" + diceNumber;
-
+  console.log(time);
   $(".dice").addClass("animations");
 
   setTimeout(function() {
     $(".dice").removeClass("animations");
-
+    console.log(time);
     $(".dice").addClass(animation);
     console.log(diceMove);
     setTimeout(function() {
+      console.log(time);
       $(".dice").removeClass(animation);
       console.log(diceMove);
       console.log(diceNumber);
@@ -120,7 +121,8 @@ $(".dice").click(function() {
         console.log(diceMove);
       }
 
-    }, 800);
+
+    }, time + 60);
 
   }, 400);
 
@@ -136,6 +138,7 @@ $(".dice").click(function() {
       $(".piece1").addClass("traclass");
 
       diceRolled1 = 1;
+      prev61 = 6;
       console.log(prev61);
       console.log(prev62);
       console.log(diceNumber);
@@ -149,29 +152,29 @@ $(".dice").click(function() {
       console.log(pos1);
       console.log(firstSix);
       if (prev61 + prev62 + diceNumber == 18) {
-        diceNumber = 12;
+        diceNumber = -1;
+        prev61 = 0;
+        prev62 = 0;
 
       } else if (diceNumber == 6 && prev61 == 6) {
         prev62 = 6;
-        diceNumber = 6;
         pos1 += diceNumber;
 
       } else if (diceNumber == 6) {
         prev61 = 6;
-        diceNumber = 6;
         pos1 += diceNumber;
       } else {
+        prev61 = 0;
+        prev62 = 0;
         pos1 += diceNumber;
-        diceNumber = prev61 + prev62 + diceNumber;
       }
       console.log(firstSix);
       console.log(prev61);
       console.log(prev62);
       console.log(diceNumber);
       console.log(pos1);
-      if (pos1 < 101 && diceNumber != 6) {
-        prev61 = 0;
-        prev62 = 0;
+      if (pos1 < 101 && diceNumber != -1) {
+
         y = 288 - u * 52;
         if (u % 2 == 0) {
           x = x + 52 * diceNumber;
@@ -288,9 +291,12 @@ $(".dice").click(function() {
         }
         ladders();
         snakes();
-        if (diceRolled1 === 1 && diceRolled2 === 1) {
-          cross();
-        }
+        setTimeout(function() {
+          if (diceRolled1 === 1 && diceRolled2 === 1) {
+            cross();
+          }
+        }, time + 50);
+
       } else if (pos1 == 101) {
         $(".piece1").css("transform", "translate(0,-180px)");
         setTimeout(function() {
@@ -307,7 +313,7 @@ $(".dice").click(function() {
         console.log(diceNumber);
         if (diceNumber == 6) {
           diceMove = 0;
-          diceNumber = 5;
+          diceNumber = -1;
           console.log(diceNumber);
         }
       }
@@ -321,25 +327,29 @@ $(".dice").click(function() {
       $(".piece2").css("transform", "translate(-10px, 180px)");
       $(".piece2").addClass("traclass");
       diceRolled2 = 1;
+      prev61 = 6;
 
     } else if (diceRolled2 === 1) {
       if (prev61 + prev62 + diceNumber == 18) {
-        diceNumber = 12;
+        diceNumber = -1;
+        prev61 = 0;
+        prev62 = 0;
       } else if (diceNumber == 6 && prev61 == 6) {
         prev62 = 6;
-        diceNumber = 6;
+
         pos2 += diceNumber;
       } else if (diceNumber == 6) {
         prev61 = 6;
-        diceNumber = 6;
+
         pos2 += diceNumber;
       } else {
-        pos2 += diceNumber;
-        diceNumber = prev61 + prev62 + diceNumber;
-      }
-      if (pos2 < 101 && diceNumber != 6) {
         prev61 = 0;
         prev62 = 0;
+        pos2 += diceNumber;
+
+      }
+      if (pos2 < 101 && diceNumber != -1) {
+      
         q = 180 - v * 52;
         if (v % 2 == 0) {
           p = p + 52 * diceNumber;
@@ -431,16 +441,18 @@ $(".dice").click(function() {
         }
         ladders();
         snakes();
-        if (diceRolled1 === 1 && diceRolled2 === 1) {
-          cross();
-        }
+        setTimeout(function() {
+          if (diceRolled1 === 1 && diceRolled2 === 1) {
+            cross();
+          }
+        }, time + 50);
       } else if (pos2 == 101) {
         $(".piece2").css("transform", "translate(0,-288px)");
         setTimeout(function() {
           alert("Player Purple won the game");
           location.reload();
         }, 1000);
-      } else if (pos1 > 101) {
+      } else if (pos2 > 101) {
         prev61 = 0;
         prev62 = 0;
         pos2 -= diceNumber;
@@ -453,8 +465,8 @@ $(".dice").click(function() {
   }
 
 
-
 });
+
 
 
 function cross() {
@@ -463,39 +475,31 @@ function cross() {
   console.log(y);
   console.log(p);
   console.log(q);
-  if (prevx === prevy && diceMove === 0) {
+  console.log(pos1);
+  console.log(pos2);
+  if (pos1 === pos2 && diceMove === 0) {
     setTimeout(function() {
       $(".piece2").css("transform", "translate(0,0)");
+      diceRolled2 = 0;
+      p = 0;
+      q = 0;
+      v = 0;
+      pos2 = 0;
+      prevy = 0;
     }, 1000);
-    diceRolled2 = 0;
-    p = 0;
-    q = 0;
-    v = 0;
-    pos2 = 0;
-    if (diceNumber != 6) {
-      diceMove = 1;
-    } else {
-      diceMove = 0;
-    }
-    prevy = 0;
-  } else if (prevx === prevy && diceMove === 1) {
+
+  } else if (pos1 === pos2 && diceMove === 1) {
     setTimeout(function() {
       $(".piece1").css("transform", "translate(0,0)");
+      x = 0;
+      y = 0;
+      u = 0;
+      pos1 = 0;
+      diceRolled1 = 0;
+      prevx = 0;
+    }, 900);
 
-    }, 1000);
-    x = 0;
-    y = 0;
-    u = 0;
-    pos1 = 0;
-    diceRolled1 = 0;
-    if (diceNumber != 6) {
-      diceMove = 0;
-    } else {
-      diceMove = 1;
-    }
-    prevx = 0;
   }
-
   console.log(x);
   console.log(y);
   console.log(p);
@@ -507,8 +511,10 @@ function cross() {
 function snakes() {
 
   if (pos1 == 16) {
-    if (diceNumber >= 6 && diceNumber <= 10) {
-      time = 2000;
+    if (diceNumber == 6) {
+      time = 1300;
+    } else {
+      time = 800;
     }
     setTimeout(function() {
 
@@ -522,22 +528,17 @@ function snakes() {
         $(".piece1").css("transform", "translate(312px,288px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 312;
-        y = 288;
-        prevx = 6;
-        u = 0;
-        pos1 = 6;
-
       }, 1000);
-    }, time - 700);
+
+      x = 312;
+      y = 288;
+      prevx = 6;
+      u = 0;
+      pos1 = 6;
+    }, time);
   } else if (pos1 == 47) {
 
-    if(diceNumber>=7&&diceNumber<=10){
-      time=3000;
-    }
-    else if(diceNumber==17){
-      time=4400;
-    }
+    time = 800;
 
     setTimeout(function() {
 
@@ -551,20 +552,18 @@ function snakes() {
         $(".piece1").css("transform", "translate(312px,184px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 312;
-        y = 184;
-        prevx = 26;
-        u = 2;
-        pos1 = 26;
+
 
       }, 1000);
-    }, time-700);
+      x = 312;
+      y = 184;
+      prevx = 26;
+      u = 2;
+      pos1 = 26;
+    }, time);
   } else if (pos1 == 49) {
 
-    if(diceNumber>=9&&diceNumber<=12){
-      time=3000;
-    }
-
+    time = 800;
     setTimeout(function() {
 
       $(".piece1").removeClass("traclass");
@@ -577,22 +576,18 @@ function snakes() {
         $(".piece1").css("transform", "translate(520px,184px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 520;
-        y = 184;
-        prevx = 30;
-        u = 2;
-        pos1 = 30;
+
 
       }, 1000);
-    }, time-700);
+      x = 520;
+      y = 184;
+      prevx = 30;
+      u = 2;
+      pos1 = 30;
+    }, time);
   } else if (pos1 == 56) {
 
-  if(diceNumber>=7&&diceNumber<=10){
-    time= 3000;
-  }
-  else if(diceNumber==16||diceNumber==17){
-    time = 4400;
-  }
+    time = 800;
 
     setTimeout(function() {
 
@@ -606,22 +601,23 @@ function snakes() {
         $(".piece1").css("transform", "translate(416px,28px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 416;
-        y = 28;
-        prevx = 53;
-        u = 5;
-        pos1 = 53;
+
 
       }, 1000);
-    }, time-700);
+      x = 416;
+      y = 28;
+      prevx = 53;
+      u = 5;
+      pos1 = 53;
+    }, time);
   } else if (pos1 == 62) {
 
-   if(diceNumber>=2&&diceNumber<=11){
-     time = 2800;
-   }
-   else if(diceNumber>=12){
-     time = 4300;
-   }
+    if (diceNumber >= 2 && diceNumber <= 6) {
+      time = 2100;
+    } else {
+      time = 800;
+    }
+
     setTimeout(function() {
 
       $(".piece1").removeClass("traclass");
@@ -634,23 +630,22 @@ function snakes() {
         $(".piece1").css("transform", "translate(104px,236px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 104;
-        y = 236;
-        prevx = 19;
-        u = 1;
-        pos1 = 19;
+
 
       }, 1000);
-    }, time-700);
+      x = 104;
+      y = 236;
+      prevx = 19;
+      u = 1;
+      pos1 = 19;
+    }, time);
   } else if (pos1 == 63) {
 
-    if(diceNumber>=3&&diceNumber<=12){
-      time = 2800;
+    if (diceNumber >= 3 && diceNumber <= 6) {
+      time = 2100;
+    } else {
+      time = 800;
     }
-    else if(diceNumber>=13){
-      time = 4300;
-    }
-
     setTimeout(function() {
 
       $(".piece1").removeClass("traclass");
@@ -663,23 +658,18 @@ function snakes() {
         $(".piece1").css("transform", "translate(52px,28px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 52;
-        y = 28;
-        prevx = 60;
-        u = 5;
-        pos1 = 60;
 
       }, 1000);
-    }, time-700);
+      x = 52;
+      y = 28;
+      prevx = 60;
+      u = 5;
+      pos1 = 60;
+
+    }, time);
   } else if (pos1 == 87) {
 
-    if(diceNumber>=7&&diceNumber<=11){
-      time=2900;
-    }
-    else if(diceNumber==17){
-      time=4300;
-    }
-
+    time = 800;
 
     setTimeout(function() {
 
@@ -693,22 +683,22 @@ function snakes() {
         $(".piece1").css("transform", "translate(208px,184px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 208;
-        y = 184;
-        prevx = 24;
-        u = 2;
-        pos1 = 24;
 
       }, 1800);
-    }, time-700);
+      x = 208;
+      y = 184;
+      prevx = 24;
+      u = 2;
+      pos1 = 24;
+
+    }, time);
   } else if (pos1 == 93) {
 
-if(diceNumber>=3&&diceNumber<10){
-  time = 2900;
-}
-else if(diceNumber>=13){
-  time = 4300;
-}
+    if (diceNumber >= 3 && diceNumber <= 6) {
+      time = 2200;
+    } else {
+      time = 800;
+    }
 
     setTimeout(function() {
 
@@ -722,23 +712,22 @@ else if(diceNumber>=13){
         $(".piece1").css("transform", "translate(416px,-76px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 416;
-        y = -76;
-        prevx = 73;
-        u = 7;
-        pos1 = 73;
+
 
       }, 1000);
-    }, time-700);
+      x = 416;
+      y = -76;
+      prevx = 73;
+      u = 7;
+      pos1 = 73;
+    }, time);
   } else if (pos1 == 95) {
 
- if(diceNumber>=5&&diceNumber<=14){
-   time = 2900;
- }
- else if(diceNumber>=15){
-   time = 4300;
- }
-
+    if (diceNumber >= 5 && diceNumber <= 6) {
+      time = 2200;
+    } else {
+      time = 800;
+    }
     setTimeout(function() {
 
       $(".piece1").removeClass("traclass");
@@ -751,21 +740,18 @@ else if(diceNumber>=13){
         $(".piece1").css("transform", "translate(312px,-76px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 312;
-        y = -76;
-        prevx = 75;
-        u = 7;
-        pos1 = 75;
+
 
       }, 1000);
-    }, time-700);
-  }
+      x = 312;
+      y = -76;
+      prevx = 75;
+      u = 7;
+      pos1 = 75;
+    }, time);
+  } else if (pos1 == 98) {
 
-  else if (pos1 == 98) {
-
-if(diceNumber>=8){
-  time=2900;
-}
+    time = 800;
 
     setTimeout(function() {
 
@@ -779,19 +765,20 @@ if(diceNumber>=8){
         $(".piece1").css("transform", "translate(156px,-76px)");
         $(".piece1").css("visibility", "visible");
 
-        x = 156;
-        y = -76;
-        prevx = 78;
-        u = 7;
-        pos1 = 78;
 
       }, 900);
-    }, time-700);
-  }
+      x = 156;
+      y = -76;
+      prevx = 78;
+      u = 7;
+      pos1 = 78;
 
-  else if (pos2 == 16) {
-    if (diceNumber >= 6 && diceNumber <= 10) {
-      time = 2000;
+    }, time);
+  } else if (pos2 == 16) {
+    if (diceNumber == 6) {
+      time = 1300;
+    } else {
+      time = 800;
     }
     setTimeout(function() {
       $(".piece2").removeClass("traclass");
@@ -804,25 +791,18 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(312px,180px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 312;
-        q = 180;
-        prevy = 6;
-        v = 0;
-        pos2 = 6;
+
 
       }, 1000);
-    }, time-700);
-  }
+      p = 312;
+      q = 180;
+      prevy = 6;
+      v = 0;
+      pos2 = 6;
+    }, time);
+  } else if (pos2 == 47) {
 
-  else if (pos2 == 47) {
-
-    if(diceNumber>=7&&diceNumber<=10){
-      time=3000;
-    }
-    else if(diceNumber==17){
-      time=4400;
-    }
-
+    time = 800;
 
     setTimeout(function() {
 
@@ -836,19 +816,18 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(312px,76px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 312;
-        q = 76;
-        prevy = 26;
-        v = 2;
-        pos2 = 26;
 
       }, 1000);
-    }, time-700);
+      p = 312;
+      q = 76;
+      prevy = 26;
+      v = 2;
+      pos2 = 26;
+
+    }, time);
   } else if (pos2 == 49) {
 
-    if(diceNumber>=9&&diceNumber<=12){
-      time=3000;
-    }
+    time = 800;
     setTimeout(function() {
 
       $(".piece2").removeClass("traclass");
@@ -861,22 +840,18 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(520px,76px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 520;
-        q = 76;
-        prevy = 30;
-        v = 2;
-        pos2 = 30;
+
 
       }, 1000);
-    }, time-700);
+      p = 520;
+      q = 76;
+      prevy = 30;
+      v = 2;
+      pos2 = 30;
+    }, time);
   } else if (pos2 == 56) {
 
-    if(diceNumber>=7&&diceNumber<=10){
-      time= 3000;
-    }
-    else if(diceNumber==16||diceNumber==17){
-      time = 4400;
-    }
+    time = 800;
 
     setTimeout(function() {
 
@@ -890,21 +865,21 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(416px,-80px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 416;
-        q = -80;
-        prevy = 53;
-        v = 5;
-        pos2 = 53;
+
 
       }, 1000);
-    }, time-700);
+      p = 416;
+      q = -80;
+      prevy = 53;
+      v = 5;
+      pos2 = 53;
+    }, time);
   } else if (pos2 == 62) {
 
-    if(diceNumber>=2&&diceNumber<=11){
-      time = 2800;
-    }
-    else if(diceNumber>=12){
-      time = 4300;
+    if (diceNumber >= 2 && diceNumber <= 6) {
+      time = 2100;
+    } else {
+      time = 800;
     }
 
     setTimeout(function() {
@@ -919,21 +894,21 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(104px,128px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 104;
-        q = 128;
-        prevy = 19;
-        v = 1;
-        pos2 = 19;
+
 
       }, 1000);
-    }, time-700);
+      p = 104;
+      q = 128;
+      prevy = 19;
+      v = 1;
+      pos2 = 19;
+    }, time);
   } else if (pos2 == 63) {
 
-    if(diceNumber>=3&&diceNumber<=12){
-      time = 2800;
-    }
-    else if(diceNumber>=13){
-      time = 4300;
+    if (diceNumber >= 3 && diceNumber <= 6) {
+      time = 2100;
+    } else {
+      time = 800;
     }
     setTimeout(function() {
 
@@ -947,22 +922,18 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(52px,-80px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 52;
-        q = -80;
-        prevy = 60;
-        v = 5;
-        pos2 = 60;
 
       }, 1000);
-    }, time-700);
+
+      p = 52;
+      q = -80;
+      prevy = 60;
+      v = 5;
+      pos2 = 60;
+    }, time);
   } else if (pos2 == 87) {
 
-    if(diceNumber>=7&&diceNumber<=11){
-      time=2900;
-    }
-    else if(diceNumber==17){
-      time=4300;
-    }
+    time = 800;
 
     setTimeout(function() {
 
@@ -976,21 +947,21 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(208px,76px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 208;
-        q = 76;
-        prevy = 24;
-        v = 2;
-        pos2 = 24;
+
 
       }, 1800);
-    }, time-700);
+      p = 208;
+      q = 76;
+      prevy = 24;
+      v = 2;
+      pos2 = 24;
+    }, time);
   } else if (pos2 == 93) {
 
-    if(diceNumber>=3&&diceNumber<10){
-      time = 2900;
-    }
-    else if(diceNumber>=13){
-      time = 4300;
+    if (diceNumber >= 3 && diceNumber <= 6) {
+      time = 2200;
+    } else {
+      time = 800;
     }
     setTimeout(function() {
 
@@ -1004,21 +975,21 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(416px,-184px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 416;
-        q = -184;
-        prevy = 73;
-        v = 7;
-        pos2 = 73;
 
       }, 1000);
-    }, time-700);
+      p = 416;
+      q = -184;
+      prevy = 73;
+      v = 7;
+      pos2 = 73;
+
+    }, time);
   } else if (pos2 == 95) {
 
-    if(diceNumber>=5&&diceNumber<=14){
-      time = 2900;
-    }
-    else if(diceNumber>=15){
-      time = 4300;
+    if (diceNumber >= 5 && diceNumber <= 6) {
+      time = 2200;
+    } else {
+      time = 800;
     }
     setTimeout(function() {
 
@@ -1032,19 +1003,18 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(312px,-184px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 312;
-        q = -184;
-        prevy = 75;
-        v = 7;
-        pos2 = 75;
 
       }, 1000);
-    }, time-700);
+
+      p = 312;
+      q = -184;
+      prevy = 75;
+      v = 7;
+      pos2 = 75;
+    }, time);
   } else if (pos2 == 98) {
 
-    if(diceNumber>=8){
-      time=2900;
-    }
+    time = 800;
     setTimeout(function() {
 
       $(".piece2").removeClass("traclass");
@@ -1057,14 +1027,15 @@ if(diceNumber>=8){
         $(".piece2").css("transform", "translate(156px,-184px)");
         $(".piece2").css("visibility", "visible");
 
-        p = 156;
-        q = -184;
-        prevy = 78;
-        v = 7;
-        pos2 = 78;
 
       }, 900);
-    }, time-700);
+      p = 156;
+      q = -184;
+      prevy = 78;
+      v = 7;
+      pos2 = 78;
+
+    }, time);
   }
 }
 
@@ -1072,77 +1043,76 @@ if(diceNumber>=8){
 
 function ladders() {
 
-  if (diceNumber == 11) {
-    time = 2900;
-  } else if (diceNumber >= 12 && diceNumber <= 17) {
-    time = 3000;
-  } else {
-    time = 1500;
-  }
+  time = 800;
 
   if (pos1 == 1) {
+    time = 700;
     setTimeout(function() {
       $(".piece1").removeClass("traclass");
       $(".pieceouter1").css("transform", "translateX(156px)");
       $(".pieceouter1").addClass("ladder1x");
       $(".piece1").css("transform", "translateY(132px)");
       $(".piece1").addClass("ladder1y");
-    }, 700);
+      setTimeout(function() {
+        $(".pieceouter1").removeClass("ladder1x");
+        $(".piece1").removeClass("ladder1y");
+        $(".pieceouter1").css("transform", "translate(0,0)");
+        $(".piece1").css("transform", "translate(156px,132px)");
+      }, 700);
+      x = 156;
+      y = 132;
+      prevx = 38;
+      u = 3;
+      pos1 = 38;
+    }, time);
 
-    setTimeout(function() {
-      $(".pieceouter1").removeClass("ladder1x");
-      $(".piece1").removeClass("ladder1y");
-      $(".pieceouter1").css("transform", "translate(0,0)");
-      $(".piece1").css("transform", "translate(156px,132px)");
-    }, 1400);
-    x = 156;
-    y = 132;
-    prevx = 38;
-    u = 3;
-    pos1 = 38;
+
   } else if (pos1 == 4) {
+    time = 700;
     setTimeout(function() {
       $(".piece1").removeClass("traclass");
       $(".pieceouter1").css("transform", "translateX(364px)");
       $(".pieceouter1").addClass("ladder4x");
       $(".piece1").css("transform", "translateY(236px)");
       $(".piece1").addClass("ladder4y");
+      setTimeout(function() {
+        $(".pieceouter1").removeClass("ladder4x");
+        $(".piece1").removeClass("ladder4y");
+        $(".pieceouter1").css("transform", "translate(0,0)");
+        $(".piece1").css("transform", "translate(364px,236px)");
+      }, 700);
       x = 364;
       y = 236;
       prevx = 14;
       u = 1;
       pos1 = 14;
-    }, 700);
+    }, time);
 
-    setTimeout(function() {
-      $(".pieceouter1").removeClass("ladder4x");
-      $(".piece1").removeClass("ladder4y");
-      $(".pieceouter1").css("transform", "translate(0,0)");
-      $(".piece1").css("transform", "translate(364px,236px)");
-    }, 1400);
 
   } else if (pos1 == 9) {
+    time = 900;
     setTimeout(function() {
       $(".piece1").removeClass("traclass");
       $(".pieceouter1").css("transform", "translateX(520px)");
       $(".pieceouter1").addClass("ladder9x");
       $(".piece1").css("transform", "translateY(132px)");
       $(".piece1").addClass("ladder9y");
+      setTimeout(function() {
+        $(".pieceouter1").removeClass("ladder9x");
+        $(".piece1").removeClass("ladder9y");
+        $(".pieceouter1").css("transform", "translate(0,0)");
+        $(".piece1").css("transform", "translate(520px,132px)");
+      }, 700);
       x = 520;
       y = 132;
       prevx = 31;
       u = 3;
       pos1 = 31;
-    }, 900);
+    }, time);
 
-    setTimeout(function() {
-      $(".pieceouter1").removeClass("ladder9x");
-      $(".piece1").removeClass("ladder9y");
-      $(".pieceouter1").css("transform", "translate(0,0)");
-      $(".piece1").css("transform", "translate(520px,132px)");
-    }, 1600);
 
   } else if (pos1 == 21) {
+    time = 1500;
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -1166,9 +1136,8 @@ function ladders() {
       pos1 = 42;
     }, time);
   } else if (pos1 == 28) {
-    if (diceNumber >= 8 && diceNumber < 11) {
-      time = 2900;
-    }
+
+    time = 800;
     setTimeout(function() {
       $(".piece1").removeClass("traclass");
       $(".pieceouter1").css("transform", "translateX(375px)");
@@ -1196,11 +1165,6 @@ function ladders() {
           $(".pieceouter1").addClass("ladder28y2");
           $(".piece1").css("transform", "translateY(-128px)");
           $(".piece1").addClass("ladder28x2");
-          x = 208;
-          y = -128;
-          prevx = 84;
-          u = 8;
-          pos1 = 84;
           setTimeout(function() {
             $(".pieceouter1").removeClass("ladder28y2");
             $(".piece1").removeClass("ladder28x2");
@@ -1210,12 +1174,17 @@ function ladders() {
           }, 800);
         }, 900);
       }, 800);
-    }, time - 700);
+      x = 208;
+      y = -128;
+      prevx = 84;
+      u = 8;
+      pos1 = 84;
+    }, time);
   } else if (pos1 == 36) {
-    if (diceNumber >= 6 && diceNumber < 11) {
-      time = 2900;
-    } else if (diceNumber == 17 || diceNumber == 16) {
-      time = 4300;
+    if (diceNumber == 6) {
+      time = 2200;
+    } else {
+      time = 800;
     }
     setTimeout(function() {
       console.log(x);
@@ -1238,9 +1207,10 @@ function ladders() {
       prevx = 44;
       u = 4;
       pos1 = 44;
-    }, time - 700);
+    }, time);
 
   } else if (pos1 == 51) {
+    time = 1500;
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -1265,6 +1235,7 @@ function ladders() {
     }, time);
 
   } else if (pos1 == 71) {
+    time = 1500;
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -1285,9 +1256,7 @@ function ladders() {
       pos1 = 91;
     }, time);
   } else if (pos1 == 80) {
-    if (diceNumber == 10) {
-      time = 2900;
-    }
+    time = 900;
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -1306,76 +1275,84 @@ function ladders() {
       prevx = 100;
       u = 9;
       pos1 = 100;
-    }, time - 600);
+    }, time);
   }
 
 
 
-
-
   if (pos2 == 1) {
+    time = 700;
     setTimeout(function() {
       $(".piece2").removeClass("traclass");
       $(".pieceouter2").css("transform", "translateX(156px)");
       $(".pieceouter2").addClass("ladder1x");
       $(".piece2").css("transform", "translateY(24px)");
       $(".piece2").addClass("ladder1y");
-    }, 700);
+      setTimeout(function() {
+        $(".pieceouter2").removeClass("ladder1x");
+        $(".piece2").removeClass("ladder1y");
+        $(".pieceouter2").css("transform", "translate(0,0)");
+        $(".piece2").css("transform", "translate(156px,24px)");
+      }, 700);
+      p = 156;
+      q = 24;
+      prevy = 38;
+      v = 3;
+      pos2 = 38;
+    }, time);
 
-    setTimeout(function() {
-      $(".pieceouter2").removeClass("ladder1x");
-      $(".piece2").removeClass("ladder1y");
-      $(".pieceouter2").css("transform", "translate(0,0)");
-      $(".piece2").css("transform", "translate(156px,24px)");
-    }, 1400);
-    p = 156;
-    q = 24;
-    prevy = 38;
-    v = 3;
-    pos2 = 38;
+
+
   } else if (pos2 == 4) {
+    time = 700;
     setTimeout(function() {
       $(".piece2").removeClass("traclass");
       $(".pieceouter2").css("transform", "translateX(364px)");
       $(".pieceouter2").addClass("ladder4x");
       $(".piece2").css("transform", "translateY(128px)");
       $(".piece2").addClass("ladder4y");
+      setTimeout(function() {
+        $(".pieceouter2").removeClass("ladder4x");
+        $(".piece2").removeClass("ladder4y");
+        $(".pieceouter2").css("transform", "translate(0,0)");
+        $(".piece2").css("transform", "translate(364px,128px)");
+      }, 700);
       p = 364;
       q = 128;
       prevy = 14;
       v = 1;
       pos2 = 14;
-    }, 700);
+    }, time);
 
-    setTimeout(function() {
-      $(".pieceouter2").removeClass("ladder4x");
-      $(".piece2").removeClass("ladder4y");
-      $(".pieceouter2").css("transform", "translate(0,0)");
-      $(".piece2").css("transform", "translate(364px,128px)");
-    }, 1400);
+
 
   } else if (pos2 == 9) {
+    time = 900;
+    console.log("hello");
     setTimeout(function() {
       $(".piece2").removeClass("traclass");
       $(".pieceouter2").css("transform", "translateX(520px)");
       $(".pieceouter2").addClass("ladder9x");
       $(".piece2").css("transform", "translateY(24px)");
       $(".piece2").addClass("ladder9y");
+
+      setTimeout(function() {
+        $(".pieceouter2").removeClass("ladder9x");
+        $(".piece2").removeClass("ladder9y");
+        $(".pieceouter2").css("transform", "translate(0,0)");
+        $(".piece2").css("transform", "translate(520px,24px)");
+      }, 700);
       p = 520;
       q = 24;
       prevy = 31;
       v = 3;
       pos2 = 31;
-    }, 900);
+      console.log("hello");
+    }, time);
 
-    setTimeout(function() {
-      $(".pieceouter2").removeClass("ladder9x");
-      $(".piece2").removeClass("ladder9y");
-      $(".pieceouter2").css("transform", "translate(0,0)");
-      $(".piece2").css("transform", "translate(520px,24px)");
-    }, 1600);
 
   } else if (pos2 == 21) {
+    time = 1500;
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -1399,9 +1376,7 @@ function ladders() {
       pos2 = 42;
     }, time);
   } else if (pos2 == 28) {
-    if (diceNumber >= 8 && diceNumber < 11) {
-      time = 2900;
-    }
+    time = 800;
     setTimeout(function() {
       $(".piece2").removeClass("traclass");
       $(".pieceouter2").css("transform", "translateX(375px)");
@@ -1429,11 +1404,6 @@ function ladders() {
           $(".pieceouter2").addClass("ladder28y2");
           $(".piece2").css("transform", "translateY(-232px)");
           $(".piece2").addClass("ladder28x2");
-          p = 208;
-          q = -232;
-          prevy = 84;
-          v = 8;
-          pos2 = 84;
           setTimeout(function() {
             $(".pieceouter2").removeClass("ladder28y2");
             $(".piece2").removeClass("ladder28x2");
@@ -1443,12 +1413,17 @@ function ladders() {
           }, 800);
         }, 900);
       }, 800);
-    }, time - 700);
+      p = 208;
+      q = -232;
+      prevy = 84;
+      v = 8;
+      pos2 = 84;
+    }, time);
   } else if (pos2 == 36) {
-    if (diceNumber >= 6 && diceNumber < 11) {
-      time = 2900;
-    } else if (diceNumber == 17 || diceNumber == 16) {
-      time = 4300;
+    if (diceNumber == 6) {
+      time = 2200;
+    } else {
+      time = 800;
     }
     setTimeout(function() {
       console.log(x);
@@ -1471,8 +1446,9 @@ function ladders() {
       prevy = 44;
       v = 4;
       pos2 = 44;
-    }, time - 700);
+    }, time);
   } else if (pos2 == 51) {
+    time = 1500;
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -1497,6 +1473,7 @@ function ladders() {
     }, time);
 
   } else if (pos2 == 71) {
+    time = 1500;
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -1515,11 +1492,9 @@ function ladders() {
       prevy = 91;
       v = 9;
       pos2 = 91;
-    }, time - 600);
+    }, time);
   } else if (pos2 == 80) {
-    if (diceNumber == 10) {
-      time = 2900;
-    }
+    time = 900;
     setTimeout(function() {
       console.log(x);
       console.log(y);
@@ -1538,6 +1513,6 @@ function ladders() {
       prevy = 100;
       v = 9;
       pos2 = 100;
-    }, time - 600);
+    }, time);
   }
 }
