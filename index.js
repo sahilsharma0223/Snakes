@@ -1,4 +1,4 @@
-alert("click on dice when it shows 1 dot.");
+// alert("click on dice when it shows 1 dot.");
 var diceMove = 0;
 var diceRolled1 = 0;
 var diceRolled2 = 0;
@@ -28,7 +28,10 @@ if (dicePos == 1) {
   diceMove = 1;
 }
 
+
+
 $(".dice").click(function() {
+  $(".dice").css("pointer-events","none");
   time = 800;
   $(".piece1").addClass("traclass");
   $(".piece2").addClass("traclass");
@@ -112,6 +115,7 @@ $(".dice").click(function() {
         console.log(diceMove);
         diceMove = 1;
         console.log(diceMove);
+          $(".dice").css("pointer-events","auto");
 
       } else if (diceNumber !== 6 && diceMove === 1) {
         $(".dice").removeClass("dice1");
@@ -119,6 +123,10 @@ $(".dice").click(function() {
         console.log(diceMove);
         diceMove = 0;
         console.log(diceMove);
+          $(".dice").css("pointer-events","auto");
+      }
+      else{
+        $(".dice").css("pointer-events","auto");
       }
 
 
