@@ -1,4 +1,4 @@
-// alert("click on dice when it shows 1 dot.");
+alert("click on dice when it shows 1 dot.");
 var diceMove = 0;
 var diceRolled1 = 0;
 var diceRolled2 = 0;
@@ -349,7 +349,7 @@ $(".dice").click(function() {
 
       }
       if (pos2 < 101 && diceNumber != -1) {
-      
+
         q = 180 - v * 52;
         if (v % 2 == 0) {
           p = p + 52 * diceNumber;
