@@ -44,7 +44,7 @@ li{
 
 body{
   background-image: url("images/main2.png");
-  
+
 }
 
 .bottom{
@@ -277,37 +277,42 @@ align-items: center;
   }
 
   .buttons{
-    margin-top: 0;
+    position: relative;
+    left: 30%;
     height: 10px;
   }
 
   .button1{
-      position: absolute;
-      right: 15px;
+      position: relative;
+      right: -300px;
       top: 25px;
       text-align:center;
+      display: inline-block;
   }
 
   .button2{
-    position: absolute;
-    right: 100px;
+    position: relative;
+    right: -150px;
     top: 25px;
     text-align:center;
+    display: inline-block;
   }
 
   .button3{
-    position: absolute;
-    right: 180px;
+    position: relative;
+    right: 0px;
     top: 25px;
     text-align:center;
+    display: inline-block;
 
   }
 
   .button4{
-    position: absolute;
-    right: 260px;
+    position: relative;
+    right: 150px;
     top: 25px;
     text-align:center;
+    display: inline-block;
 
   }
   .grid-container{
