@@ -1,4 +1,5 @@
 // alert("click on dice when it shows 1 dot.");
+var audio;
 var diceMove = 0;
 var diceRolled1 = 0;
 var diceRolled2 = 0;
@@ -20,6 +21,7 @@ var g = 0;
 var prevx = 0;
 var prev61 = 0;
 var prev62 = 0;
+var a=1;
 var m = 0;
 var dicePos = Math.floor(Math.random() * 2 + 1);
 if (dicePos == 1) {
@@ -28,9 +30,66 @@ if (dicePos == 1) {
   diceMove = 1;
 }
 
+$(".button1").click(function(){
+  $(".button1").css("transform","translateY(15px) scale(1.2)");
+  setTimeout(function(){
+    $(".button1").css("transform","translateY(0)");
+  },300);
+  $(".major").css("filter","blur(10px)");
+  $(".helpContent").css("visibility","visible");
+});
+
+$(".button2").click(function(){
+  $(".button2").css("transform","translateY(15px) scale(1.2)  rotate(-360deg)");
+  setTimeout(function(){
+    $(".button2").css("transform","translateY(0)");
+    location.reload();
+  },300);
+});
+
+$(".button3").click(function(){
+  $(".button3").css("transform","translateY(15px) scale(1.2)");
+  setTimeout(function(){
+    $(".button3").css("transform","translateY(0)");
+  },300);
+
+});
+
+
+$(".button4").click(function(){
+  $(".button4").css("transform","translateY(15px) scale(1.2)");
+  setTimeout(function(){
+    $(".button4").css("transform","translateY(0)");
+  },300);
+  if(a==1){
+      $(".button4").children('img').attr("src","css/images/speakeroff.png");
+      a=0;
+  }
+  else{
+      $(".button4").children('img').attr("src","css/images/speaker.png");
+      a=1;
+  }
+});
+
+$(".ok").click(function(){
+  $(".ok").css("transform","translateY(10px)");
+  setTimeout(function(){
+    $(".ok").css("transform","translateY(0)");
+  },300);
+  $(".helpContent").css("visibility","hidden");
+  setTimeout(function(){
+      $(".major").css("filter","blur(0px)");
+  },700);
+
+});
 
 
 $(".dice").click(function() {
+  if(a==1){
+    audio = new Audio("sounds/dice.mp3");
+    audio.play();
+  }
+
   $(".dice").css("pointer-events","none");
   time = 800;
   $(".piece1").addClass("traclass");
@@ -307,10 +366,14 @@ $(".dice").click(function() {
 
       } else if (pos1 == 101) {
         $(".piece1").css("transform", "translate(0,-180px)");
+        if(a==1){
+          audio = new Audio("sounds/winning.mp3");
+          audio.play();
+        }
         setTimeout(function() {
           alert("player red won the game");
           location.reload();
-        }, 1000);
+        }, 1500);
 
       } else if (pos1 > 101) {
         console.log(pos1);
@@ -456,10 +519,14 @@ $(".dice").click(function() {
         }, time + 50);
       } else if (pos2 == 101) {
         $(".piece2").css("transform", "translate(0,-288px)");
+        if(a==1){
+          audio = new Audio("sounds/winning.mp3");
+          audio.play();
+        }
         setTimeout(function() {
           alert("Player Purple won the game");
           location.reload();
-        }, 1000);
+        }, 1500);
       } else if (pos2 > 101) {
         prev61 = 0;
         prev62 = 0;
@@ -487,6 +554,10 @@ function cross() {
   console.log(pos2);
   if (pos1 === pos2 && diceMove === 0) {
     setTimeout(function() {
+      if(a==1){
+        audio = new Audio("sounds/fail.mp3");
+        audio.play();
+      }
       $(".piece2").css("transform", "translate(0,0)");
       diceRolled2 = 0;
       p = 0;
@@ -494,10 +565,14 @@ function cross() {
       v = 0;
       pos2 = 0;
       prevy = 0;
-    }, 1000);
+    }, 900);
 
   } else if (pos1 === pos2 && diceMove === 1) {
     setTimeout(function() {
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").css("transform", "translate(0,0)");
       x = 0;
       y = 0;
@@ -525,7 +600,10 @@ function snakes() {
       time = 800;
     }
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake16");
@@ -549,7 +627,10 @@ function snakes() {
     time = 800;
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake47");
@@ -573,7 +654,10 @@ function snakes() {
 
     time = 800;
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake49");
@@ -598,7 +682,10 @@ function snakes() {
     time = 800;
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake56");
@@ -627,7 +714,10 @@ function snakes() {
     }
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake62");
@@ -655,7 +745,10 @@ function snakes() {
       time = 800;
     }
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake63");
@@ -680,7 +773,10 @@ function snakes() {
     time = 800;
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake87");
@@ -709,7 +805,10 @@ function snakes() {
     }
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake93");
@@ -737,7 +836,10 @@ function snakes() {
       time = 800;
     }
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake95");
@@ -762,7 +864,10 @@ function snakes() {
     time = 800;
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece1").removeClass("traclass");
       $(".piece1").css("visibility", "hidden");
       $(".testt").addClass("redanimation snake98");
@@ -789,6 +894,10 @@ function snakes() {
       time = 800;
     }
     setTimeout(function() {
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake16");
@@ -813,7 +922,10 @@ function snakes() {
     time = 800;
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake47");
@@ -837,7 +949,10 @@ function snakes() {
 
     time = 800;
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake49");
@@ -862,7 +977,10 @@ function snakes() {
     time = 800;
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake56");
@@ -891,7 +1009,10 @@ function snakes() {
     }
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake62");
@@ -919,7 +1040,10 @@ function snakes() {
       time = 800;
     }
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake63");
@@ -944,7 +1068,10 @@ function snakes() {
     time = 800;
 
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake87");
@@ -972,7 +1099,10 @@ function snakes() {
       time = 800;
     }
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake93");
@@ -1000,7 +1130,10 @@ function snakes() {
       time = 800;
     }
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake95");
@@ -1024,7 +1157,10 @@ function snakes() {
 
     time = 800;
     setTimeout(function() {
-
+      if(a==1){
+        audio = new Audio("sounds/snake.mp3");
+        audio.play();
+      }
       $(".piece2").removeClass("traclass");
       $(".piece2").css("visibility", "hidden");
       $(".testt").addClass("purpleanimation snake98");
