@@ -71,10 +71,10 @@ height: 100%;
   margin-bottom: 2px;
 }
 
-.buttons{
+/* .buttons{
   margin-top: 0;
   height: 100px;
-}
+} */
 
 .button1,.button2,.button3,.button4{
   height: 60px;
@@ -88,34 +88,44 @@ height: 100%;
   transition: transform 300ms ease;
   cursor: pointer;
 }
+.buttons{
+  position: relative;
+  left: 71%;
+  height: 100px;
+  width: 400px;
+}
 
 .button1{
-    position: absolute;
-    right: 70px;
-    top: 15px;
+    position: relative;
+    right: -300px;
+    top: 25px;
     text-align:center;
+    display: inline-block;
 }
 
 .button2{
-  position: absolute;
-  right: 155px;
-  top: 15px;
+  position: relative;
+  right: -150px;
+  top: 25px;
   text-align:center;
+  display: inline-block;
 }
 
 .button3{
-  position: absolute;
-  right: 235px;
-  top: 15px;
+  position: relative;
+  right: 0px;
+  top: 25px;
   text-align:center;
+  display: inline-block;
 
 }
 
 .button4{
-  position: absolute;
-  right: 315px;
-  top: 15px;
+  position: relative;
+  right: 150px;
+  top: 25px;
   text-align:center;
+  display: inline-block;
 
 }
 
