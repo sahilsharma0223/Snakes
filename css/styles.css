@@ -42,9 +42,13 @@ li{
   transition: transform 100ms ease;
 }
 
-body{
+html,body{
+  padding: 0;
+  margin: 0;
+}
+.major{
   background-image: url("images/main2.png");
-
+height: 100%;
 }
 
 .bottom{
@@ -235,14 +239,43 @@ align-items: center;
 }
 
 @media only screen and (min-width:501px) and (max-width:1100px) {
+body{
+  background-image: url("images/main2.png");
+}
+
   .grid-container{
     margin: 0 200px;
   }
+  .major{
+    background-image: none;
+  }
+  .buttons{
+    position:relative;
+    left: 20%;
+  }
+
+    .helpContent{
+      position: absolute;
+      top: 200px;
+      left: 250px;
+      height: 350px;
+      width: 500px;
+      background: linear-gradient(135deg, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+      border-radius: 20px;
+      border: 10px solid black;
+      z-index: 4;
+      visibility: hidden;
+      transition: visibility 700ms ease;
+    }
 }
 
 @media only screen and (max-width:500px) {
   body{
     background-image:url("images/main1.jpeg");
+  }
+
+  .major{
+    background-image: none;
   }
 
   .helpContent{

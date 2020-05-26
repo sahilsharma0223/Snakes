@@ -34,9 +34,13 @@ $(".button1").click(function(){
   $(".button1").css("transform","translateY(15px) scale(1.2)");
   setTimeout(function(){
     $(".button1").css("transform","translateY(0)");
+    setTimeout(function(){
+      $(".major").css("filter","blur(10px)");
+      $(".helpContent").css("visibility","visible");
+    },200);
+
   },300);
-  $(".major").css("filter","blur(10px)");
-  $(".helpContent").css("visibility","visible");
+
 });
 
 $(".button2").click(function(){
@@ -570,7 +574,7 @@ function cross() {
   } else if (pos1 === pos2 && diceMove === 1) {
     setTimeout(function() {
       if(a==1){
-        audio = new Audio("sounds/snake.mp3");
+        audio = new Audio("sounds/fail.mp3");
         audio.play();
       }
       $(".piece1").css("transform", "translate(0,0)");
