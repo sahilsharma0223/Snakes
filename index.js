@@ -38,9 +38,7 @@ $(".button1").click(function(){
       $(".major").css("filter","blur(10px)");
       $(".helpContent").css("visibility","visible");
     },200);
-
   },300);
-
 });
 
 $(".button2").click(function(){
@@ -112,13 +110,13 @@ $(".dice").click(function() {
   //   diceNumber = 2;
   //   g = 3;
   // } else if (g == 3) {
-  //   diceNumber = 30;
+  //   diceNumber = 20;
   //   g = 4;
   // } else if (g == 4) {
   //   diceNumber = 2;
   //   g = 5;
   // } else if (g == 5) {
-  //   diceNumber = 10;
+  //   diceNumber = 6;
   //   g = 6;
   // } else if (g == 6) {
   //   diceNumber = 3;
@@ -682,8 +680,12 @@ function snakes() {
       pos1 = 30;
     }, time);
   } else if (pos1 == 56) {
-
-    time = 800;
+if(diceNumber==6){
+  time = 2100;
+}
+else{
+  time = 800;
+}
 
     setTimeout(function() {
       if(a==1){
@@ -978,7 +980,12 @@ function snakes() {
     }, time);
   } else if (pos2 == 56) {
 
-    time = 800;
+    if(diceNumber==6){
+      time = 2100;
+    }
+    else{
+      time = 800;
+    }
 
     setTimeout(function() {
       if(a==1){
