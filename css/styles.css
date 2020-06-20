@@ -141,15 +141,16 @@ height: 100%;
 
 .helpContent{
   position: absolute;
-  top: 180px;
-  left: 441px;
+  left: 33vw;
+  top: 31vh;
   height: 350px;
   width: 500px;
   background: linear-gradient(135deg, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
   border-radius: 20px;
   border: 10px solid black;
-  visibility: hidden;
-  transition: visibility 700ms ease;
+  transform: translateY(-1000px);
+  transition: transform 700ms ease;
+  z-index: 4;
 }
 
 .replayImg{
@@ -274,8 +275,7 @@ body{
       border-radius: 20px;
       border: 10px solid black;
       z-index: 4;
-      visibility: hidden;
-      transition: visibility 700ms ease;
+      transition: transform 700ms ease;
     }
 }
 
@@ -298,8 +298,7 @@ body{
     border-radius: 20px;
     border: 10px solid black;
     z-index: 4;
-    visibility: hidden;
-    transition: visibility 700ms ease;
+    transition: transform 700ms ease;
   }
 
   .ok{

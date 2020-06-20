@@ -36,7 +36,7 @@ $(".button1").click(function(){
     $(".button1").css("transform","translateY(0)");
     setTimeout(function(){
       $(".major").css("filter","blur(10px)");
-      $(".helpContent").css("visibility","visible");
+      $(".helpContent").css("transform","translateY(0)");
     },200);
   },300);
 });
@@ -61,7 +61,7 @@ $(".button3").click(function(){
 $(".button4").click(function(){
   $(".button4").css("transform","translateY(15px) scale(1.2)");
   setTimeout(function(){
-    $(".button4").css("transform","translateY(0)");
+    $(".button4").css("transform","scale(1) translate(-1300px,4500px)");
   },300);
   if(a==1){
       $(".button4").children('img').attr("src","css/images/speakeroff.png");
@@ -78,7 +78,7 @@ $(".ok").click(function(){
   setTimeout(function(){
     $(".ok").css("transform","translateY(0)");
   },300);
-  $(".helpContent").css("visibility","hidden");
+  $(".helpContent").css("transform","translateY(-1000px)");
   setTimeout(function(){
       $(".major").css("filter","blur(0px)");
   },700);
