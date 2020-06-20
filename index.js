@@ -61,7 +61,7 @@ $(".button3").click(function(){
 $(".button4").click(function(){
   $(".button4").css("transform","translateY(15px) scale(1.2)");
   setTimeout(function(){
-    $(".button4").css("transform","scale(1) translate(-1300px,4500px)");
+    $(".button4").css("transform","translateY(0) scale(1)");
   },300);
   if(a==1){
       $(".button4").children('img').attr("src","css/images/speakeroff.png");
