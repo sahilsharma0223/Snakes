@@ -28,9 +28,6 @@ if (dicePos == 1) {
   $(".dice").addClass("dice1");
   $(".side").addClass("side1");
   diceMove = 1;
-  setTimeout(function(){
-    $(".dice").trigger("click");
-  },700);
 }
 
 $(".button1").click(function(){
@@ -40,6 +37,7 @@ $(".button1").click(function(){
     setTimeout(function(){
       $(".major").css("filter","blur(10px)");
       $(".helpContent").css("transform","translateY(0)");
+      $(".buttons,.dice").css("pointer-events","none");
     },200);
   },300);
 });
@@ -84,6 +82,7 @@ $(".ok").click(function(){
   $(".helpContent").css("transform","translateY(-1000px)");
   setTimeout(function(){
       $(".major").css("filter","blur(0px)");
+      $(".buttons,.dice").css("pointer-events","auto");
   },700);
 
 });
@@ -102,39 +101,38 @@ $(".dice").click(function() {
   prev = diceNumber;
   // diceNumber =6-f;
   // f=2;
-  // diceNumber = Math.floor(Math.random() * 6 + 1);
-  if (g == 0) {
-    diceNumber = 6;
-    g = 1;
-  } else if (g == 1) {
-    diceNumber = 8;
-    g = 2;
-  } else if (g == 2) {
-    diceNumber = 2;
-    g = 3;
-  } else if (g == 3) {
-    diceNumber = 6;
-    g = 4;
-  } else if (g == 4) {
-    diceNumber = 2;
-    g = 5;
-  } else if (g == 5) {
-    diceNumber = 6;
-    g = 6;
-  } else if (g == 6) {
-    diceNumber = 3;
-    g = 7;
-  } else if (g == 7) {
-    diceNumber = 1;
-    g = 8;
-  } else if (g == 8) {
-    diceNumber = 6;
-    g = 9;
-  } else if (g == 9) {
-    diceNumber = 0;
-    g = 10;
-  }
-  // else if (g == 10) {
+  diceNumber = Math.floor(Math.random() * 6 + 1);
+  // if (g == 0) {
+  //   diceNumber = 6;
+  //   g = 1;
+  // } else if (g == 1) {
+  //   diceNumber = 30;
+  //   g = 2;
+  // } else if (g == 2) {
+  //   diceNumber = 2;
+  //   g = 3;
+  // } else if (g == 3) {
+  //   diceNumber = 20;
+  //   g = 4;
+  // } else if (g == 4) {
+  //   diceNumber = 2;
+  //   g = 5;
+  // } else if (g == 5) {
+  //   diceNumber = 6;
+  //   g = 6;
+  // } else if (g == 6) {
+  //   diceNumber = 3;
+  //   g = 7;
+  // } else if (g == 7) {
+  //   diceNumber = 1;
+  //   g = 8;
+  // } else if (g == 8) {
+  //   diceNumber = 6;
+  //   g = 9;
+  // } else if (g == 9) {
+  //   diceNumber = 0;
+  //   g = 10;
+  // } else if (g == 10) {
   //   diceNumber = 30;
   //   g = 11;
   // } else if (g == 11) {
@@ -161,52 +159,38 @@ $(".dice").click(function() {
   //    g = 17;
   //  }
   var animation = "animation" + diceNumber;
-
+  console.log(time);
   $(".dice").addClass("animations");
 
   setTimeout(function() {
     $(".dice").removeClass("animations");
-
+    console.log(time);
     $(".dice").addClass(animation);
-
+    console.log(diceMove);
     setTimeout(function() {
-
+      console.log(time);
       $(".dice").removeClass(animation);
-
+      console.log(diceMove);
+      console.log(diceNumber);
       if (diceNumber !== 6 && diceMove === 0) {
         $(".dice").addClass("dice1");
         $(".side").addClass("side1");
-
+        console.log(diceMove);
         diceMove = 1;
-
-
-          setTimeout(function(){
-            $(".dice").trigger("click");
-
-
-          },900);
+        console.log(diceMove);
+          $(".dice").css("pointer-events","auto");
 
       } else if (diceNumber !== 6 && diceMove === 1) {
         $(".dice").removeClass("dice1");
         $(".side").removeClass("side1");
-
+        console.log(diceMove);
         diceMove = 0;
-             $(".dice").css("pointer-events","auto");
-
+        console.log(diceMove);
+          $(".dice").css("pointer-events","auto");
       }
       else{
-        // if(diceMove===1){
-        //
-        //   setTimeout(function(){
-        //     $(".dice").trigger("click");
-        //   },900);
-        // }
-        // else{
-            $(".dice").css("pointer-events","auto");
-        // }
-
+        $(".dice").css("pointer-events","auto");
       }
-
 
 
     }, time + 60);
@@ -214,9 +198,11 @@ $(".dice").click(function() {
   }, 400);
 
 
+  console.log(diceMove);
 
   if (diceMove === 0) {
-
+    console.log(x);
+    console.log(y);
     if (diceNumber === 6 && diceRolled1 === 0) {
       $(".pieceouter1").css("transform", "translate(0,0)");
       $(".piece1").css("transform", "translate(-10px, 288px)");
@@ -224,11 +210,18 @@ $(".dice").click(function() {
 
       diceRolled1 = 1;
       prev61 = 6;
-
+      console.log(prev61);
+      console.log(prev62);
+      console.log(diceNumber);
+      console.log(pos1);
 
     } else if (diceRolled1 === 1) {
 
-
+      console.log(prev61);
+      console.log(prev62);
+      console.log(diceNumber);
+      console.log(pos1);
+      console.log(firstSix);
       if (prev61 + prev62 + diceNumber == 18) {
         diceNumber = -1;
         prev61 = 0;
@@ -246,7 +239,11 @@ $(".dice").click(function() {
         prev62 = 0;
         pos1 += diceNumber;
       }
-
+      console.log(firstSix);
+      console.log(prev61);
+      console.log(prev62);
+      console.log(diceNumber);
+      console.log(pos1);
       if (pos1 < 101 && diceNumber != -1) {
 
         y = 288 - u * 52;
@@ -257,13 +254,14 @@ $(".dice").click(function() {
           x = x - 52 * diceNumber;
         }
 
-
+        console.log(x);
+        console.log(y);
         if (x >= 0 && x <= 520 && u % 2 == 0) {
-
+          console.log(pos1);
           $(".pieceouter1").css("transform", "translate(0,0)");
           $(".piece1").css("transform", "translate(" + x + "px," + y + "px )");
           $(".piece1").addClass("traclass");
-
+          console.log(pos1);
           prevx += diceNumber;
         } else if (x > 0 && x <= 520 && u % 2 != 0) {
 
@@ -275,18 +273,22 @@ $(".dice").click(function() {
 
         } else if (x >= 520) {
 
-
+          console.log(x);
+          console.log(y);
           x = 520 - 52 * (diceNumber - ((u + 1) * 10 + 1 - prevx));
           y = 288 - 52 * (u + 1);
-
+          console.log(x);
+          console.log(y);
           $(".pieceouter1").css("transform", "translate(0,0)");
           $(".piece1").css("transform", "translate(520px," + (y + 52) + "px)");
           $(".piece1").addClass("traclass");
           setTimeout(function() {
-
+            console.log(x);
+            console.log(y);
             $(".piece1").css("transform", "translate(520px," + y + "px)");
             setTimeout(function() {
-
+              console.log(x);
+              console.log(y);
               if (x > 0) {
                 $(".piece1").css("transform", "translate(" + x + "px, " + y + "px)");
               } else {
@@ -297,10 +299,12 @@ $(".dice").click(function() {
                 $(".piece1").css("transform", "translate(52px, " + (y + 52) + "px)");
                 $(".piece1").addClass("traclass");
                 setTimeout(function() {
-
+                  console.log(x);
+                  console.log(y);
                   $(".piece1").css("transform", "translate(52px, " + y + "px)");
                   setTimeout(function() {
-
+                    console.log(x);
+                    console.log(y);
                     $(".piece1").css("transform", "translate(" + x + "px, " + y + "px)");
                   }, 700);
                 }, 700);
@@ -316,15 +320,18 @@ $(".dice").click(function() {
           u++;
           x = 52 + 52 * (diceNumber - (u * 10 + 1 - prevx));
           y = 288 - 52 * u;
-
+          console.log(x);
+          console.log(y);
           $(".pieceouter1").css("transform", "translate(0,0)");
           $(".piece1").css("transform", "translate(52px, " + (y + 52) + "px)");
           $(".piece1").addClass("traclass");
           setTimeout(function() {
-
+            console.log(x);
+            console.log(y);
             $(".piece1").css("transform", "translate(52px, " + y + "px)");
             setTimeout(function() {
-
+              console.log(x);
+              console.log(y);
               if (x <= 520) {
                 $(".piece1").css("transform", "translate(" + x + "px, " + y + "px)");
               } else {
@@ -336,10 +343,12 @@ $(".dice").click(function() {
                 $(".piece1").css("transform", "translate(520px," + (y + 52) + "px)");
                 $(".piece1").addClass("traclass");
                 setTimeout(function() {
-
+                  console.log(x);
+                  console.log(y);
                   $(".piece1").css("transform", "translate(520px," + y + "px)");
                   setTimeout(function() {
-
+                    console.log(x);
+                    console.log(y);
                     $(".piece1").css("transform", "translate(" + x + "px, " + y + "px)");
                   }, 700);
                 }, 700);
@@ -371,11 +380,12 @@ $(".dice").click(function() {
         }, 1500);
 
       } else if (pos1 > 101) {
-
+        console.log(pos1);
         prev61 = 0;
         prev62 = 0;
         pos1 = pos1 - diceNumber;
-
+        console.log(pos1);
+        console.log(diceNumber);
         if (diceNumber == 6) {
           diceMove = 0;
           diceNumber = -1;
@@ -386,21 +396,15 @@ $(".dice").click(function() {
     }
 
   } else {
-
+    console.log(p);
+    console.log(q);
     if (diceNumber === 6 && diceRolled2 === 0) {
       $(".piece2").css("transform", "translate(-10px, 180px)");
       $(".piece2").addClass("traclass");
       diceRolled2 = 1;
       prev61 = 6;
 
-console.log(diceNumber);
-        setTimeout(function(){
-          $(".dice").trigger("click");
-        },1500);
-
-
     } else if (diceRolled2 === 1) {
-      console.log(diceNumber);
       if (prev61 + prev62 + diceNumber == 18) {
         diceNumber = -1;
         prev61 = 0;
@@ -419,7 +423,6 @@ console.log(diceNumber);
         pos2 += diceNumber;
 
       }
-      console.log(diceNumber);
       if (pos2 < 101 && diceNumber != -1) {
 
         q = 180 - v * 52;
@@ -429,19 +432,14 @@ console.log(diceNumber);
         } else {
           p = p - 52 * diceNumber;
         }
+        console.log(p);
+        console.log(q);
 
         if (p >= 0 && p <= 520 && v % 2 == 0) {
           $(".pieceouter2").css("transform", "translate(0,0)")
           $(".piece2").css("transform", "translate(" + p + "px," + q + "px )");
           $(".piece2").addClass("traclass");
           prevy += diceNumber;
-console.log(diceNumber);
-          if(diceNumber==6){
-            setTimeout(function(){
-              $(".dice").trigger("click");
-            },1400);
-          }
-
         } else if (p > 0 && p <= 520 && v % 2 != 0) {
 
           p = 520 - 52 * (diceNumber + (prevy % (10 * v)) - 1);
@@ -449,12 +447,6 @@ console.log(diceNumber);
           $(".pieceouter2").css("transform", "translate(0,0)");
           $(".piece2").css("transform", "translate(" + p + "px," + q + "px )");
           prevy += diceNumber;
-console.log(diceNumber);
-                    if(diceNumber==6){
-                      setTimeout(function(){
-                        $(".dice").trigger("click");
-                      },1400);
-                    }
 
         } else if (p >= 520) {
 
@@ -468,11 +460,6 @@ console.log(diceNumber);
             setTimeout(function() {
               if (p > 0) {
                 $(".piece2").css("transform", "translate(" + p + "px, " + q + "px)");
-console.log(diceNumber);
-console.log(p/52);
-console.log(q);
-
-
               } else {
                 v++;
                 p = 52 + 52 * (pos2 - 10 * v - 1);
@@ -484,13 +471,6 @@ console.log(q);
                   $(".piece2").css("transform", "translate(52px, " + q + "px)");
                   setTimeout(function() {
                     $(".piece2").css("transform", "translate(" + p + "px, " + q + "px)");
-console.log(diceNumber);
-                              if(diceNumber==6){
-                                setTimeout(function(){
-                                  $(".dice").trigger("click");
-                                },1400);
-                              }
-
                   }, 700);
                 }, 700);
               }
@@ -512,13 +492,6 @@ console.log(diceNumber);
             setTimeout(function() {
               if (p <= 520) {
                 $(".piece2").css("transform", "translate(" + p + "px, " + q + "px)");
-
-                          if(diceNumber==6){
-                            setTimeout(function(){
-                              $(".dice").trigger("click");
-                            },1400);
-                          }
-
               } else {
                 v++;
                 p = 520 - 52 * (pos2 - 10 * v - 1);
@@ -530,13 +503,6 @@ console.log(diceNumber);
                   $(".piece2").css("transform", "translate(520px," + q + "px)");
                   setTimeout(function() {
                     $(".piece2").css("transform", "translate(" + p + "px, " + q + "px)");
-
-                              if(diceNumber==6){
-                                setTimeout(function(){
-                                  $(".dice").trigger("click");
-                                },1400);
-                              }
-
                   }, 700);
                 }, 700);
 
@@ -583,7 +549,13 @@ console.log(diceNumber);
 
 
 function cross() {
-
+  console.log(diceMove);
+  console.log(x);
+  console.log(y);
+  console.log(p);
+  console.log(q);
+  console.log(pos1);
+  console.log(pos2);
   if (pos1 === pos2 && diceMove === 0) {
     setTimeout(function() {
       if(a==1){
@@ -615,7 +587,10 @@ function cross() {
     }, 900);
 
   }
-
+  console.log(x);
+  console.log(y);
+  console.log(p);
+  console.log(q);
 }
 
 
@@ -941,13 +916,7 @@ else{
         $(".piece2").css("transform", "translate(312px,180px)");
         $(".piece2").css("visibility", "visible");
 
-console.log(diceNumber);
 
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
 
       }, 1000);
       p = 312;
@@ -974,12 +943,6 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake47");
         $(".piece2").css("transform", "translate(312px,76px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
 
 
       }, 1000);
@@ -1007,12 +970,8 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake49");
         $(".piece2").css("transform", "translate(520px,76px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
+
+
 
       }, 1000);
       p = 520;
@@ -1044,12 +1003,8 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake56");
         $(".piece2").css("transform", "translate(416px,-80px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
+
+
 
       }, 1000);
       p = 416;
@@ -1080,12 +1035,8 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake62");
         $(".piece2").css("transform", "translate(104px,128px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
+
+
 
       }, 1000);
       p = 104;
@@ -1115,12 +1066,7 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake63");
         $(".piece2").css("transform", "translate(52px,-80px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
+
 
       }, 1000);
 
@@ -1148,12 +1094,8 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake87");
         $(".piece2").css("transform", "translate(208px,76px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
+
+
 
       }, 1800);
       p = 208;
@@ -1183,12 +1125,7 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake93");
         $(".piece2").css("transform", "translate(416px,-184px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
+
 
       }, 1000);
       p = 416;
@@ -1219,12 +1156,7 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake95");
         $(".piece2").css("transform", "translate(312px,-184px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
+
 
       }, 1000);
 
@@ -1251,12 +1183,7 @@ console.log(diceNumber);
         $(".testt").removeClass("purpleanimation snake98");
         $(".piece2").css("transform", "translate(156px,-184px)");
         $(".piece2").css("visibility", "visible");
-console.log(diceNumber);
-        if(diceNumber==6){
-          setTimeout(function(){
-            $(".dice").trigger("click");
-          },1400);
-        }
+
 
       }, 900);
       p = 156;
